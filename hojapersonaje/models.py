@@ -55,32 +55,32 @@ class Dote(models.Model):
 		return self.nomDot
 
 class Participa(models.Model):
-	usuPar = models.ForeignKey(Usuario, on_delete=models.CASCADE)
-	camPar = models.ForeignKey(Campaña, on_delete=models.CASCADE)
+	usuPar = models.ForeignKey(Usuario, on_delete=models.CASCADE, default=1)
+	camPar = models.ForeignKey(Campaña, on_delete=models.CASCADE, default=1)
 	dmPar = models.BooleanField(default=False)
 
 	def __str__(self):
 		return str(self.camPar)
 
 class Rasgo(models.Model):
-	perRas = models.ManyToManyField(Personaje)
-	carRas = models.ManyToManyField(Caracteristica)
+	perRas = models.ForeignKey(Personaje, on_delete=models.CASCADE, default=1)
+	carRas = models.ForeignKey(Caracteristica, on_delete=models.CASCADE, default=1)
 	valRas = models.IntegerField(2)
 
 	def __str__(self):
 		return self.perRas
 
 class Rango(models.Model):
-	perRan = models.ManyToManyField(Personaje)
-	habRan = models.ManyToManyField(Habilidad)
+	perRan = models.ForeignKey(Personaje, on_delete=models.CASCADE, default=1)
+	habRan = models.ForeignKey(Habilidad, on_delete=models.CASCADE, default=1)
 	valRan = models.IntegerField(2)
 
 	def __str__(self):
 		return self.perRan
 
 class Cualidad(models.Model):
-	perCua = models.ManyToManyField(Personaje)
-	dotCua = models.ManyToManyField(Dote)
+	perCua = models.ForeignKey(Personaje, on_delete=models.CASCADE, default=1)
+	dotCua = models.ForeignKey(Dote, on_delete=models.CASCADE, default=1)
 
 	def __str__(self):
 		return self.perCua

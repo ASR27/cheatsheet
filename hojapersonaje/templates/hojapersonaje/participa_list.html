@@ -1,0 +1,10 @@
+{% extends "plantilla_base.html" %}
+
+{% block content %}
+	<h2>Participantes</h2>
+	<ul>
+		{% for participa in object_list %}
+			<li>{{participa.camPar}} - {{participa.usuPar}} - {{participa.dmPar}}</li>
+		{% endfor %}
+	</ul>
+{% endblock %}
