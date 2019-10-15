@@ -55,6 +55,7 @@ class Dote(models.Model):
 		return self.nomDot
 
 class Participa(models.Model):
+	idPar = models.AutoField(primary_key=True)
 	usuPar = models.ForeignKey(Usuario, on_delete=models.CASCADE, default=1)
 	camPar = models.ForeignKey(Campaña, on_delete=models.CASCADE, default=1)
 	dmPar = models.BooleanField(default=False)
@@ -63,6 +64,7 @@ class Participa(models.Model):
 		return str(self.camPar)
 
 class Rasgo(models.Model):
+	idRas = models.AutoField(primary_key=True)
 	perRas = models.ForeignKey(Personaje, on_delete=models.CASCADE, default=1)
 	carRas = models.ForeignKey(Caracteristica, on_delete=models.CASCADE, default=1)
 	valRas = models.IntegerField(2)
@@ -71,6 +73,7 @@ class Rasgo(models.Model):
 		return self.perRas
 
 class Rango(models.Model):
+	idRan = models.AutoField(primary_key=True)
 	perRan = models.ForeignKey(Personaje, on_delete=models.CASCADE, default=1)
 	habRan = models.ForeignKey(Habilidad, on_delete=models.CASCADE, default=1)
 	valRan = models.IntegerField(2)
@@ -79,6 +82,7 @@ class Rango(models.Model):
 		return self.perRan
 
 class Cualidad(models.Model):
+	idCua = models.AutoField(primary_key=True)
 	perCua = models.ForeignKey(Personaje, on_delete=models.CASCADE, default=1)
 	dotCua = models.ForeignKey(Dote, on_delete=models.CASCADE, default=1)
 
