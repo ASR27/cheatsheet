@@ -2,9 +2,10 @@
 
 {% block content %}
 	<h2>Participantes</h2>
+	<p>Nombre de campaña - Nombre de Usuario - DM</p>
 	<ul>
 		{% for participa in object_list %}
-			<li>{{participa.camPar}} - {{participa.usuPar}} - {{participa.dmPar}}</li>
+			<li><a href="../participadetail/{{ participa.camPar }}">{{participa.camPar}} - {{participa.usuPar}} - {{participa.dmPar}}</a></li>
 		{% endfor %}
 	</ul>
 {% endblock %}

@@ -1,0 +1,11 @@
+{% extends "plantilla_base.html" %}
+
+{% block content %}
+	<h2>Usuarios</h2>
+	<p>ID - Nombre</p>
+	<ul>
+		{% for usuario in object_list %}
+			<li><a href='../usuariodetail/{{ usuario.idUsu }}'> {{usuario.idUsu}} - {{usuario.nomUsu}} </a></li>
+		{% endfor %}
+	</ul>
+{% endblock %}

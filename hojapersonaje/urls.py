@@ -6,4 +6,7 @@ from hojapersonaje.views import *
 urlpatterns = [
 	path('', views.index, name="index"),
 	path('participalist/', ParticipaList.as_view(), name="participantes"),
+	path('participadetail/<camPar>/', ParticipaDetail.as_view(), name="participante"),
+	path('usuariolist/', UsuarioList.as_view(), name="usuarios"),
+	path('usuariodetail/<int:pk>', UsuarioDetail.as_view(), name="usuario_detail"),
 ]
