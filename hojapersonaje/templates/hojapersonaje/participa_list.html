@@ -5,7 +5,7 @@
 	<p>Nombre de campaña - Nombre de Usuario - DM</p>
 	<ul>
 		{% for participa in object_list %}
-			<li><a href="../participadetail/{{ participa.camPar }}">{{participa.camPar}} - {{participa.usuPar}} - {{participa.dmPar}}</a></li>
+			<li><a href="../participadetail/{{ participa.idPar }}">{{participa.idPar}} {{participa.camPar}} - {{participa.usuPar}} - {{participa.dmPar}}</a></li>
 		{% endfor %}
 	</ul>
 {% endblock %}
