@@ -1,6 +1,7 @@
 from django.shortcuts import HttpResponse
 from django.views.generic import ListView, DetailView
-from hojapersonaje.models import Participa, Usuario
+from hojapersonaje.models import Participa
+from django.contrib.auth.models import User
 
 # Create your views here.
 
@@ -23,11 +24,11 @@ class ParticipaDetail(DetailView):
 
 
 class UsuarioList(ListView):
-	model = Usuario
+	model = User
 	template_name="hojapersonaje/usuario_list.html"
 
 class UsuarioDetail(DetailView):
-	model = Usuario
+	model = User
 	template_name="hojapersonaje/usuario_detail.html"
 	fields = '__all__'
 

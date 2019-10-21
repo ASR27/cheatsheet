@@ -1,14 +1,8 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
-class Usuario(models.Model):
-	idUsu = models.AutoField(primary_key=True)
-	nomUsu = models.CharField(max_length=40)
-	email = models.EmailField(max_length=200)
-
-	def __str__(self):
-		return self.nomUsu
 
 class Campaña(models.Model):
 	idCam = models.AutoField(primary_key=True)
@@ -56,8 +50,8 @@ class Dote(models.Model):
 
 class Participa(models.Model):
 	idPar = models.AutoField(primary_key=True)
-	usuPar = models.ForeignKey(Usuario, on_delete=models.CASCADE, default=1)
-	camPar = models.ForeignKey(Campaña, on_delete=models.CASCADE, default=1)
+	usuPar = models.OneToOneField(User, on_delete=models.CASCADE)
+	camPar = models.ForeignKey(Campaña, on_delete=models.CASCADE)
 	dmPar = models.BooleanField(default=False)
 
 	def __str__(self):
@@ -65,8 +59,8 @@ class Participa(models.Model):
 
 class Rasgo(models.Model):
 	idRas = models.AutoField(primary_key=True)
-	perRas = models.ForeignKey(Personaje, on_delete=models.CASCADE, default=1)
-	carRas = models.ForeignKey(Caracteristica, on_delete=models.CASCADE, default=1)
+	perRas = models.ForeignKey(Personaje, on_delete=models.CASCADE)
+	carRas = models.ForeignKey(Caracteristica, on_delete=models.CASCADE)
 	valRas = models.IntegerField(2)
 
 	def __str__(self):
@@ -74,8 +68,8 @@ class Rasgo(models.Model):
 
 class Rango(models.Model):
 	idRan = models.AutoField(primary_key=True)
-	perRan = models.ForeignKey(Personaje, on_delete=models.CASCADE, default=1)
-	habRan = models.ForeignKey(Habilidad, on_delete=models.CASCADE, default=1)
+	perRan = models.ForeignKey(Personaje, on_delete=models.CASCADE)
+	habRan = models.ForeignKey(Habilidad, on_delete=models.CASCADE)
 	valRan = models.IntegerField(2)
 
 	def __str__(self):
@@ -83,8 +77,8 @@ class Rango(models.Model):
 
 class Cualidad(models.Model):
 	idCua = models.AutoField(primary_key=True)
-	perCua = models.ForeignKey(Personaje, on_delete=models.CASCADE, default=1)
-	dotCua = models.ForeignKey(Dote, on_delete=models.CASCADE, default=1)
+	perCua = models.ForeignKey(Personaje, on_delete=models.CASCADE)
+	dotCua = models.ForeignKey(Dote, on_delete=models.CASCADE)
 
 	def __str__(self):
 		return self.perCua
