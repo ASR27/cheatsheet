@@ -1,5 +1,7 @@
 from django.shortcuts import HttpResponse
 from django.views.generic import ListView, DetailView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
 from hojapersonaje.models import Participa
 from django.contrib.auth.models import User
 
@@ -22,6 +24,18 @@ class ParticipaDetail(DetailView):
 		context['camPar']=self.camPar
 		return 
 
+class ParticipaCreate(CreateView):
+	model = Participa
+	fields = '__all__'
+	template_name="hojapersonaje/participa_form.html"
+
+class ParticipaUpdate(UpdateView):
+	model = Participa
+	fields = '__all__'
+
+class ParticipaDelete(DeleteView):
+	model = Participa
+	success_url = reverse_lazy('participa-list')
 
 class UsuarioList(ListView):
 	model = User
