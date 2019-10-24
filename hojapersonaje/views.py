@@ -32,10 +32,13 @@ class ParticipaCreate(CreateView):
 class ParticipaUpdate(UpdateView):
 	model = Participa
 	fields = '__all__'
+	template_name="hojapersonaje/participa_update.html"
 
 class ParticipaDelete(DeleteView):
 	model = Participa
-	success_url = reverse_lazy('participa-list')
+	fields = '__all__'
+	success_url = reverse_lazy('participantes')
+	template_name="hojapersonaje/participa_delete.html"
 
 class UsuarioList(ListView):
 	model = User

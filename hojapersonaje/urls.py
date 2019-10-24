@@ -12,6 +12,6 @@ urlpatterns = [
 	path('usuariolist/', UsuarioList.as_view(), name="usuarios"),
 	path('usuariodetail/<int:pk>', UsuarioDetail.as_view(), name="usuario_detail"),
 	path('participa_add/', ParticipaCreate.as_view(), name='participa-add'),
-	path(r'participa_update/(?P<pk>[0-9]+)/$', ParticipaUpdate.as_view(), name='participa-update'),
-	path(r'participa_delete/(?P<pk>[0-9]+)/delete/$', ParticipaDelete.as_view(), name='participa-delete'),
+	path('participa_update/<int:pk>/', ParticipaUpdate.as_view(), name='participa-update'),
+	path('participa_delete/<int:pk>/delete/', ParticipaDelete.as_view(), name='participa-delete'),
 ]
