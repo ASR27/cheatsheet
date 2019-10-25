@@ -28,11 +28,13 @@ class ParticipaCreate(CreateView):
 	model = Participa
 	fields = '__all__'
 	template_name="hojapersonaje/participa_form.html"
+	success_url = reverse_lazy('participantes')
 
 class ParticipaUpdate(UpdateView):
 	model = Participa
 	fields = '__all__'
 	template_name="hojapersonaje/participa_update.html"
+	success_url = reverse_lazy('participantes')
 
 class ParticipaDelete(DeleteView):
 	model = Participa
