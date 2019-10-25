@@ -5,7 +5,7 @@
 	<p>ID - Nombre</p>
 	<ul>
 		{% for usuario in object_list %}
-			<li><a href='../usuariodetail/{{ user.username }}'> {{user.username}} </a></li>
+			<li><a href="{% url 'usuario_detail' usuario.pk %}"> {{usuario.username}} </a></li>
 		{% endfor %}
 	</ul>
 {% endblock %}

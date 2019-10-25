@@ -15,9 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from hojapersonaje.views import ParticipaList
+from django.conf.urls import url
+from hojapersonaje.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('hojapersonaje/', include('hojapersonaje.urls')),
+    url('signup/', signup, name='signup')
 ]
