@@ -2,9 +2,16 @@
 
 {% block content %}
 <h2>Sign Up</h2>
-<form method="post">
+<form method="post" enctype="multipart/form-data">
 	{% csrf_token %}
-	{{ form.as_p }}
+	<p>usuario</p>
+	{{ form.username }}<br>
+	<p>contraseña</p>
+	{{ form.password1 }}<br>
+	<p>confirmar contraseña</p>
+	{{ form.password2 }}<br>
+	<p>avatar</p>
+	{{ form.imgPer }}
 	<button type="submit">Sign up</button>
 </form>
 {% endblock %}

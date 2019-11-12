@@ -2,4 +2,5 @@
 	<h2>{{ object.headline }}</h2>
 	<p>{{ object.context }}</p>
 	<p>Usuario: {{ object.username }}</p>
+	<p>Avatar:<img src='{{ MEDIA_URL }}{{ user.perfil.imgPer }}'></p>
 {% endblock %}

@@ -2,10 +2,10 @@
 
 {% block content %}
 	<h2>Usuarios</h2>
-	<p>ID - Nombre</p>
+	<p>Nombre</p>
 	<ul>
 		{% for usuario in object_list %}
-			<li><a href="{% url 'usuario_detail' usuario.pk %}"> {{usuario.username}} </a></li>
+			<li><a href="/hojapersonaje/usuariodetail/{{ user.pk }}"> {{usuario.username}} </a></li>
 		{% endfor %}
 	</ul>
 {% endblock %}

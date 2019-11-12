@@ -1,8 +1,24 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 # Create your models here.
 
+# Usuario de Django extendido
+
+class Perfil(models.Model):
+	user = models.OneToOneField(User, on_delete=models.CASCADE)
+	imgPer = models.ImageField(upload_to='avatar', blank=True)
+
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+	if created:
+		Perfil.objects.create(user=instance)
+
+
+
+# Tablas creadas desde 0
 
 class Campaña(models.Model):
 	idCam = models.AutoField(primary_key=True)

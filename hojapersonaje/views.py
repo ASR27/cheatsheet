@@ -6,6 +6,7 @@ from hojapersonaje.models import Participa
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
+from hojapersonaje.forms import Registro
 
 # Create your views here.
 
@@ -63,18 +64,19 @@ class UsuarioDetail(DetailView):
 		context = super().get_content_data(**kwargs)
 		return
 
-# Sign Up
+# Sign Up, temporalmente redirige a la lista de usuarios
 
 def signup(request):
 	if request.method == 'POST':
-		form = UserCreationForm(request.POST)
+		form = Registro(request.POST, request.FILES)
 		if form.is_valid():
 			form.save()
 			username = form.cleaned_data.get('username')
 			raw_password = form.cleaned_data.get('password1')
+			User.perfil.imgPer = form.cleaned_data.get('imgPer')
 			user = authenticate(username=username, password=raw_password)
 			login(request, user)
 			return redirect('usuarios')
 	else:
-		form = UserCreationForm()
+		form = Registro()
 	return render(request, 'signup.html', {'form': form})
