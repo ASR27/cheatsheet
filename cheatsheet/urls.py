@@ -21,5 +21,6 @@ from hojapersonaje.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('hojapersonaje/', include('hojapersonaje.urls')),
-    url('signup/', signup, name='signup')
+    url('signup/', signup, name='signup'),
+    path('', include('hojapersonaje.urls')),
 ]
