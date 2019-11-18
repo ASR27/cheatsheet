@@ -5,7 +5,7 @@
 	<p>Nombre</p>
 	<ul>
 		{% for usuario in object_list %}
-			<li><a href="/hojapersonaje/usuariodetail/{{ user.pk }}"> {{usuario.username}} </a></li>
+			<li><a href="/hojapersonaje/usuariodetail/{{ usuario.pk }}"> {{usuario.username}} </a></li>
 		{% endfor %}
 	</ul>
 {% endblock %}
