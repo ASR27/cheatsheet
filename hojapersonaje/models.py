@@ -15,7 +15,7 @@ class Perfil(models.Model):
 def create_user_profile(sender, instance, created, **kwargs):
 	if created:
 		Perfil.objects.create(user=instance)
-
+	instance.perfil.save()
 
 
 # Tablas creadas desde 0

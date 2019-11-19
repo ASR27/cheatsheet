@@ -10,6 +10,7 @@ from . import views
 from hojapersonaje.views import *
 
 urlpatterns = [
+	path('accounts/', include('django.contrib.auth.urls')),
 	path('', views.index, name="index"),
 	path('participalist/', ParticipaList.as_view(), name="participantes"),
 	path('participadetail/<int:pk>', ParticipaDetail.as_view(), name="participante"),

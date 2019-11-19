@@ -124,3 +124,5 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = '/home/asr/Documentos/IAW/CheatSheet/cheatsheet/hojapersonaje/media/'
 
 MEDIA_URL = '/media/'
+
+LOGIN_REDIRECT_URL = '/'
