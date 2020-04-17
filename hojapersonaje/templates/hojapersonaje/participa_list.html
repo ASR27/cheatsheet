@@ -2,10 +2,16 @@
 
 {% block content %}
 	<h2>Participantes</h2>
-	<p>Nombre de campaña - Nombre de Usuario - DM</p>
+
+	<p>Participar en una nueva campaña: <button onclick="location.href='{% url 'participa-add' %}'">Nueva Participación</button></p>
+
+	<p>Nombre de campaña - Nombre de Usuario</p>
 	<ul>
 		{% for participa in object_list %}
-			<li><a href="../participadetail/{{ participa.idPar }}">{{participa.idPar}} {{participa.camPar}} - {{participa.usuPar}} - {{participa.dmPar}}</a></li>
+			{% if request.user.id == participa.usuPar.user.id or participa.camPar.usuCam.user.id %}
+				<li><a href="../participadetail/{{ participa.idPar }}">{{participa.camPar}} - {{participa.usuPar}} - {{participa.camPar.usuCam}}</a></li>
+			{% endif %}
 		{% endfor %}
 	</ul>
+
 {% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'plantilla_base.html' %}
+
+{% block content %}
+
+{% if request.user.id == personaje.usuPer.user.id %}
+
+<form action="" method="post">{% csrf_token %}
+	{{ form.as_p }}
+	<input type="submit" value="Update" />
+</form>
+
+{% else %}
+
+<p>No tienes permisos para esto</p>
+
+{% endif %}
+
+{% endblock %}

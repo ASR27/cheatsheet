@@ -1,11 +1,12 @@
-from django.shortcuts import HttpResponse, render, redirect
-from django.views.generic import ListView, DetailView
+from django.shortcuts import HttpResponse, render, redirect, HttpResponseRedirect
+from django.views.generic import ListView, DetailView, TemplateView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from hojapersonaje.models import Participa
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required,user_passes_test
 from hojapersonaje.forms import Registro
 
 from .models import *
@@ -13,10 +14,7 @@ from .forms import *
 
 # Create your views here.
 
-def index(request):
-	return HttpResponse("Hello, world")
-
-# Participa listas y detalles
+# Participa
 
 class ParticipaList(ListView):
 	model = Participa
@@ -32,19 +30,29 @@ class ParticipaDetail(DetailView):
 		context['camPar']=self.camPar
 		return 
 
-# Pruebas crear, actualizar y borrar
+@login_required(login_url='/accounts/login/')
+def ParticipaCreate(request):
+	if request.method == 'POST':
+		form1 = ParticipaCreateForm(request.POST)
+		if form1.is_valid():
+			participa = Participa()
+			participa.usuPar = form1.cleaned_data.get('usuPar')
+			participa.camPar = form1.cleaned_data.get('camPar')
+			if request.user.id == participa.camPar.usuCam.user.id:
+				participa.save()
+				return HttpResponseRedirect('/hojapersonaje/participalist')
+			else:
+				return HttpResponseRedirect('/hojapersonaje/errorparticipa')
+	else:
+		form1 = ParticipaCreateForm()
+	return render(request, 'hojapersonaje/participa_form.html', {'participa': form1})
 
-class ParticipaCreate(CreateView):
-	model = Participa
-	fields = '__all__'
-	template_name="hojapersonaje/participa_form.html"
-	success_url = reverse_lazy('participantes')
 
-class ParticipaUpdate(UpdateView):
-	model = Participa
-	fields = '__all__'
-	template_name="hojapersonaje/participa_update.html"
-	success_url = reverse_lazy('participantes')
+# class ParticipaCreate(CreateView):
+# 	model = Participa
+# 	fields = '__all__'
+# 	template_name="hojapersonaje/participa_form.html"
+# 	success_url = reverse_lazy('participantes')
 
 class ParticipaDelete(DeleteView):
 	model = Participa
@@ -52,7 +60,10 @@ class ParticipaDelete(DeleteView):
 	success_url = reverse_lazy('participantes')
 	template_name="hojapersonaje/participa_delete.html"
 
-# Usuarios lista y detalles
+def ErrorParticipa(request):
+	return HttpResponseRedirect('/hojapersonaje/errorparticipa')
+
+# Usuarios
 
 class UsuarioList(ListView):
 	model = User
@@ -66,6 +77,11 @@ class UsuarioDetail(DetailView):
 	def get_content_data(self, **kwargs):
 		context = super().get_content_data(**kwargs)
 		return
+
+class UsuarioUpdate(UpdateView):
+	model = Perfil
+	fields = ['imgPer']
+	template_name="hojapersonaje/usuarioupdate.html"
 
 # Sign Up, temporalmente redirige a la lista de usuarios
 
@@ -87,18 +103,192 @@ def signup(request):
 	return render(request, 'signup.html', {'form': form})
 
 
-# def InicioSesion(request):
-# 	if request.method == 'POST':
-# 		form = InicioSesion(request.POST)
-# 		if form.is_valid():
-# 			username = form.cleaned_data.get('username')
-# 			password = form.cleaned_data.get('password')
-# 			user = authenticate(request, username=username, password=password)
-# 			if user is not None:
-# 				login(request, user)
-# 				return redirect('usuarios')
-# 			else:
-# 				return HttpResponse("Error de Login")
-# 	else:
-# 		form = InicioSesion()
-# 	return render(request, 'login.html', {'form': form})
+# Hoja de personaje basica
+
+
+class Estadisticas(ListView):
+	model = Personaje
+	template_name="hojapersonaje/estadisticas.html"
+
+class EstadisticasDetail(DetailView):
+	model = Personaje
+	template_name = "hojapersonaje/estadisticasdetail.html"
+	fields = '__all__'
+
+	def get_content_data(self, **kwargs):
+		context = super().get_content_data(**kwargs)
+		return
+
+class EstadisticasUpdate(UpdateView):
+	model = Personaje
+	fields = ['nomPer',
+	'claPer',
+	'nivPer',
+	'razPer',
+	'genPer',
+	'aliPer',
+	'camPer',
+	'FUE',
+	'DES',
+	'CON',
+	'INT',
+	'SAB',
+	'CAR',
+	'DGPer',
+	'MaxDGPer',
+	'fortaleza',
+	'reflejos',
+	'voluntad',
+	'abrirCerraduras',
+	'artesania',
+	'averiguarIntenciones',
+	'avistar',
+	'buscar',
+	'concentracion',
+	'conocimientoConjuros',
+	'descifrarEscrituras',
+	'diplomacia',
+	'disfrazarse',
+	'engañar',
+	'equilibrio',
+	'esconderse',
+	'escuchar',
+	'falsificar',
+	'interpretar',
+	'intimidar',
+	'inutilizarMecanismo',
+	'juegoManos',
+	'montar',
+	'moverseSigilosamente',
+	'nadar',
+	'oficio',
+	'piruetas',
+	'reunirInformacion',
+	'saber',
+	'saltar',
+	'sanar',
+	'supervivencia',
+	'tasacion',
+	'tratoAnimales',
+	'trepar',
+	'usarObjetoMagico',
+	'usoCuerdas']
+	template_name="hojapersonaje/estadisticasupdate.html"
+	success_url = reverse_lazy('estadisticas')
+
+
+class EstadisticasDelete(DeleteView):
+	model = Personaje
+	fields = '__all__'
+	success_url = reverse_lazy('estadisticas')
+	template_name="hojapersonaje/estadisticasdelete.html"
+
+@login_required(login_url='/accounts/login/')
+def EstadisticasAdd(request):
+	if request.method == 'POST':
+		form1 = EstadisticasAddForm(request.POST)
+		if form1.is_valid():
+			personaje = Personaje()
+			usuario = Perfil.objects.get(user=request.user)
+			personaje.usuPer = usuario
+			personaje.nomPer = form1.cleaned_data.get('nomPer')
+			personaje.claPer = form1.cleaned_data.get('claPer')
+			personaje.nivPer = form1.cleaned_data.get('nivPer')
+			personaje.ataPer = form1.cleaned_data.get('ataPer')
+			personaje.razPer = form1.cleaned_data.get('razPer')
+			personaje.genPer = form1.cleaned_data.get('genPer')
+			personaje.aliPer = form1.cleaned_data.get('aliPer')
+			personaje.DGPer = form1.cleaned_data.get('DGPer')
+			personaje.MaxDGPer = form1.cleaned_data.get('MaxDGPer')
+
+			personaje.FUE = form1.cleaned_data.get('FUE')
+			personaje.DES = form1.cleaned_data.get('DES')
+			personaje.CON = form1.cleaned_data.get('CON')
+			personaje.INT = form1.cleaned_data.get('INT')
+			personaje.SAB = form1.cleaned_data.get('SAB')
+			personaje.CAR = form1.cleaned_data.get('CAR')
+			
+			personaje.fortaleza = form1.cleaned_data.get('fortaleza')
+			personaje.reflejos = form1.cleaned_data.get('reflejos')
+			personaje.voluntad = form1.cleaned_data.get('voluntad')
+
+			personaje.abrirCerraduras = form1.cleaned_data.get('abrirCerraduras')
+			personaje.artesania = form1.cleaned_data.get('artesania')
+			personaje.averiguarIntenciones = form1.cleaned_data.get('averiguarIntenciones')
+			personaje.avistar = form1.cleaned_data.get('avistar')
+			personaje.buscar = form1.cleaned_data.get('buscar')
+			personaje.concentracion = form1.cleaned_data.get('concentracion')
+			personaje.conocimientoConjuros = form1.cleaned_data.get('conocimientoConjuros')
+			personaje.descifrarEscrituras = form1.cleaned_data.get('descifrarEscrituras')
+			personaje.diplomacia = form1.cleaned_data.get('diplomacia')
+			personaje.disfrazarse = form1.cleaned_data.get('disfrazarse')
+			personaje.engañar = form1.cleaned_data.get('engañar')
+			personaje.equilibrio = form1.cleaned_data.get('equilibrio')
+			personaje.esconderse = form1.cleaned_data.get('esconderse')
+			personaje.escuchar = form1.cleaned_data.get('escuchar')
+			personaje.falsificar = form1.cleaned_data.get('falsificar')
+			personaje.interpretar = form1.cleaned_data.get('interpretar')
+			personaje.intimidar = form1.cleaned_data.get('intimidar')
+			personaje.inutilizarMecanismo = form1.cleaned_data.get('inutilizarMecanismo')
+			personaje.juegoManos = form1.cleaned_data.get('juegoManos')
+			personaje.montar = form1.cleaned_data.get('montar')
+			personaje.moverseSigilosamente = form1.cleaned_data.get('moverseSigilosamente')
+			personaje.nadar = form1.cleaned_data.get('nadar')
+			personaje.oficio = form1.cleaned_data.get('oficio')
+			personaje.piruetas = form1.cleaned_data.get('piruetas')
+			personaje.reunirInformacion = form1.cleaned_data.get('reunirInformacion')
+			personaje.saber = form1.cleaned_data.get('saber')
+			personaje.saltar = form1.cleaned_data.get('saltar')
+			personaje.sanar = form1.cleaned_data.get('sanar')
+			personaje.supervivencia = form1.cleaned_data.get('supervivencia')
+			personaje.tasacion = form1.cleaned_data.get('tasacion')
+			personaje.tratoAnimales = form1.cleaned_data.get('tratoAnimales')
+			personaje.trepar = form1.cleaned_data.get('trepar')
+			personaje.usarObjetoMagico = form1.cleaned_data.get('usarObjetoMagico')
+			personaje.usoCuerdas = form1.cleaned_data.get('usoCuerdas')
+
+			personaje.save()
+			return HttpResponseRedirect('/hojapersonaje/estadisticas')
+	else:
+		form1 = EstadisticasAddForm()
+	return render(request, 'hojapersonaje/estadisticasadd.html', {'personaje': form1})
+
+# Campañas
+
+class Campañas(ListView):
+	model = Campaña
+	template_name="hojapersonaje/campañas.html"
+
+class CampañasDetail(DetailView):
+	model = Campaña
+	template_name = "hojapersonaje/campañasdetail.html"
+	fields = '__all__'
+
+class CampañasUpdate(UpdateView):
+	model = Campaña
+	fields = ['nomCam','desCam']
+	template_name="hojapersonaje/campañasupdate.html"
+	success_url = reverse_lazy('campañas')
+
+class CampañasDelete(DeleteView):
+	model = Campaña
+	fields = '__all__'
+	success_url = reverse_lazy('campañas')
+	template_name="hojapersonaje/campañasdelete.html"
+
+@login_required(login_url='/accounts/login/')
+def CampañasAdd(request):
+	if request.method == 'POST':
+		form1 = CampañasAddForm(request.POST)
+		if form1.is_valid():
+			campaña = Campaña()
+			usuario = Perfil.objects.get(user=request.user)
+			campaña.usuCam = usuario
+			campaña.nomCam = form1.cleaned_data.get('nomCam')
+			campaña.desCam = form1.cleaned_data.get('desCam')
+						
+			campaña.save()
+			return HttpResponseRedirect('/hojapersonaje/campanas')
+	else:
+		form1 = CampañasAddForm()
+	return render(request, 'hojapersonaje/campañasadd.html', {'campaña': form1})

@@ -1,0 +1,12 @@
+{% extends 'plantilla_base.html' %}
+
+{% block content %}
+
+	<a href="/hojapersonaje/campanasupdate/{{ campaña.idCam }}">Modificar</a>
+	<a href="/hojapersonaje/campanasdelete/{{ campaña.idCam }}/delete">Borrar</a>
+
+	<p>Nombre de la Campaña: {{ object.nomCam }}</p>
+	<p>Descripción de la Campaña: {{ object.desCam }}</p>
+
+
+{% endblock %}

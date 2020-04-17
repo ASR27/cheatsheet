@@ -1,6 +1,9 @@
+{% extends "plantilla_base.html" %}
+
 {% block content %}
 	<h2>{{ object.headline }}</h2>
 	<p>{{ object.context }}</p>
+	<a href="/hojapersonaje/usuarioupdate/{{ object.pk }}">Modificar</a>
 	<p>Usuario: {{ object.username }}</p>
 	<p>Avatar:<img src='/media/{{ user.perfil.imgPer }}'></p>
 {% endblock %}

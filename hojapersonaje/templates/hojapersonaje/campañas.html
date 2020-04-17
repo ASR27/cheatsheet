@@ -1,0 +1,13 @@
+{% extends "plantilla_base.html" %}
+
+{% block content %}
+	<h2>Campañas</h2>
+
+	<p><button onclick="location.href='{% url 'campanasadd' %}'">Crear</button> Crear Campaña</p>
+
+	<ul>
+		{% for campaña in object_list %}
+			<li><a href="/hojapersonaje/campanasdetail/{{ campaña.pk }}"> {{campaña.nomCam}} </a></li>
+		{% endfor %}
+	</ul>
+{% endblock %}

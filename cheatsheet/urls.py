@@ -19,6 +19,7 @@ from django.conf.urls import url
 from django.views.generic.base import TemplateView
 from hojapersonaje.views import *
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('hojapersonaje/', include('hojapersonaje.urls')),

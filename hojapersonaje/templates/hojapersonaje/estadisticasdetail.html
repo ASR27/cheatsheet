@@ -1,0 +1,60 @@
+{% extends 'plantilla_base.html' %}
+
+{% block content %}
+
+	<a href="/hojapersonaje/estadisticasupdate/{{ personaje.idPer }}">Modificar</a>
+	<a href="/hojapersonaje/estadisticasdelete/{{ personaje.idPer }}/delete">Borrar</a>
+
+	<p>Nombre: {{ object.nomPer }}</p>
+	<p>Nivel: {{ object.nivPer }}</p>
+	<p>Ataque Base: {{ object.ataPer }}</p>
+	<p>Clase: {{ object.claPer }}</p>
+	<p>Raza: {{ object.razPer }}</p>
+	<p>Genero: {{ object.genPer }}</p>
+	<p>Alineamiento: {{ object.aliPer }}</p>
+
+	<p>Fuerza: {{ object.FUE }}</p>
+	<p>Destreza: {{ object.DES }}</p>
+	<p>Constitución: {{ object.CON }}</p>
+	<p>Inteligencia: {{ object.INT }}</p>
+	<p>Sabiduría: {{ object.SAB }}</p>
+	<p>Carisma: {{ object.CAR }}</p>
+
+	<p>Fortaleza: {{ object.fortaleza }}</p>
+	<p>Refeljos: {{ object.reflejos }}</p>
+	<p>Voluntad: {{ object.voluntad }}</p>
+
+	<p>Abrir Cerraduras: {{ object.abrirCerraduras }}</p>
+	<p>Artesanía: {{ object.artesania }}</p>
+	<p>Averiguar Intenciones: {{ object.averiguarIntenciones }}</p>
+	<p>Avistar: {{ object.avistar }}</p>
+	<p>Concentración: {{ object.concentracion }}</p>
+	<p>Conocimiento de Conjuros: {{ object.conocimientoConjuros }}</p>
+	<p>Descifrar Escrituras: {{ object.descifrarEscrituras }}</p>
+	<p>Diplomacia: {{ object.diplomacia }}</p>
+	<p>Disfrazarse: {{ object.disfrazarse }}</p>
+	<p>Engañar: {{ object.engañar }}</p>
+	<p>Equilibrio: {{ object.equilibrio }}</p>
+	<p>Esconderse: {{ object.esconderse }}</p>
+	<p>Escuchar: {{ object.escuchar }}</p>
+	<p>Falsificar: {{ object.falsificar }}</p>
+	<p>Interpretar: {{ object.interpretar }}</p>
+	<p>Intimidar: {{ object.intimidar }}</p>
+	<p>Inutilizar Mecanismo: {{ object.inutilizarMecanismo }}</p>
+	<p>Juego de Manos: {{ object.juegoManos }}</p>
+	<p>Montar: {{ object.montar }}</p>
+	<p>Moverse Sigilosamente: {{ object.moverseSigilosamente }}</p>
+	<p>Nadar: {{ object.nadar }}</p>
+	<p>Oficio: {{ object.oficio }}</p>
+	<p>Piruetas: {{ object.piruetas }}</p>
+	<p>Reunir Información: {{ object.reunirInformacion }}</p>
+	<p>Saber: {{ object.saber }}</p>
+	<p>Supervivencia: {{ object.supervivencia }}</p>
+	<p>Tasación: {{ object.tasacion }}</p>
+	<p>Trato con Animales: {{ object.tratoAnimales }}</p>
+	<p>Trepar: {{ object.trepar }}</p>
+	<p>Usar Objeto Mágico: {{ object.usarObjetoMagico }}</p>
+	<p>Uso de Cuerdas: {{ object.usoCuerdas }}</p>
+
+
+{% endblock %}

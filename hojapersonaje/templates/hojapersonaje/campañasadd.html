@@ -1,12 +1,13 @@
-{% extends "plantilla_base.html" %}
+{% extends 'plantilla_base.html' %}
 
 {% block content %}
+<h2>Crear Campaña</h2>
 <form method="post" enctype="multipart/form-data">
 	{% csrf_token %}
-	<p>Usuario</p>
-	{{ participa.usuPar }}<br>
-	<p>Campaña</p>
-	{{ participa.camPar }}<br>
+	<p>nombre de la campaña</p>
+	{{ campaña.nomCam }}<br>
+	<p>descripción</p>
+	{{ campaña.desCam }}<br>
 	{{ form.as_p }}
 	<input type="submit" value="Crear" />
 </form>

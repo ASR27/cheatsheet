@@ -4,6 +4,17 @@
 
 {% block content %}
 	<p><h1>Bienvenidos a CheatSheet</h1></p>
-	<p>Registro <button onclick="location.href='{% url 'signup' %}'">Sign Up</button></p>
-	<p>Iniciar Sesión <button onclick="location.href='{% url 'login' %}'">Login</button></p>
+	{% if user.is_authenticated %}
+		<p>Bienvenido {{ request.user }}</p>
+		<p>Detalles del usuario<button onclick="location.href='hojapersonaje/usuariodetail/{{ request.user.id }}'">Detalles</button></p>
+		<p>Lista de personajes<button onclick="location.href='hojapersonaje/estadisticas/'">Personajes</button></p>
+		<p>Lista de Campañas<button onclick="location.href='hojapersonaje/campanas/'">Campañas</button></p>
+		<p>Lista de Participaciones<button onclick="location.href='hojapersonaje/participalist/'">Participaciones</button></p>
+
+		<p>Cerrar Sesion<button onclick="location.href='{% url 'logout' %}'">Log Out</button></p>
+	{% else %}
+		<p>Registro <button onclick="location.href='{% url 'signup' %}'">Sign Up</button></p>
+		<p>Iniciar Sesión <button onclick="location.href='{% url 'login' %}'">Login</button></p>
+	{% endif %}
+	
 {% endblock %}
