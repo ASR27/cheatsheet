@@ -18,12 +18,23 @@ from django.urls import path, include
 from django.conf.urls import url
 from django.views.generic.base import TemplateView
 from hojapersonaje.views import *
+from hojapersonaje import views
+from rest_framework import routers
+
+router = routers.DefaultRouter()
+router.register(r'userapi', views.UserAPI)
+router.register(r'campañaapi', views.CampañaAPI)
+router.register(r'personajeapi', views.PersonajeAPI)
+router.register(r'participaapi', views.ParticipaAPI)
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('hojapersonaje/', include('hojapersonaje.urls')),
     url('signup/', signup, name='signup'),
+    url('personajeboton/', PersonajeBoton, name='personajeboton'),
     url(r'^$', TemplateView.as_view(template_name='home.html')),
     path('', include('hojapersonaje.urls')),
+    path('', include(router.urls)),
+    path(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]

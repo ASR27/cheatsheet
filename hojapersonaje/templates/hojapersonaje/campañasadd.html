@@ -8,7 +8,11 @@
 	{{ campaña.nomCam }}<br>
 	<p>descripción</p>
 	{{ campaña.desCam }}<br>
-	{{ form.as_p }}
+	<p>Fecha estimada de finalización</p>
+	{{ campaña.ffinCam }}<br>
+	<p>Estado</p>
+	{{ campaña.estCam }}<br>
+	{{ form.as_p }}<br>
 	<input type="submit" value="Crear" />
 </form>
 {% endblock %}

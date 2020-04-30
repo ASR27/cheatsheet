@@ -8,13 +8,22 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required,user_passes_test
 from hojapersonaje.forms import Registro
+from rest_framework import viewsets, permissions
+from rest_framework.permissions import IsAdminUser
+from hojapersonaje.serializers import *
 
 from .models import *
 from .forms import *
 
+import random
+
 # Create your views here.
 
+
+###########################################
 # Participa
+###########################################
+
 
 class ParticipaList(ListView):
 	model = Participa
@@ -48,12 +57,6 @@ def ParticipaCreate(request):
 	return render(request, 'hojapersonaje/participa_form.html', {'participa': form1})
 
 
-# class ParticipaCreate(CreateView):
-# 	model = Participa
-# 	fields = '__all__'
-# 	template_name="hojapersonaje/participa_form.html"
-# 	success_url = reverse_lazy('participantes')
-
 class ParticipaDelete(DeleteView):
 	model = Participa
 	fields = '__all__'
@@ -63,7 +66,12 @@ class ParticipaDelete(DeleteView):
 def ErrorParticipa(request):
 	return HttpResponseRedirect('/hojapersonaje/errorparticipa')
 
+
+###########################################
 # Usuarios
+###########################################
+
+
 
 class UsuarioList(ListView):
 	model = User
@@ -83,7 +91,11 @@ class UsuarioUpdate(UpdateView):
 	fields = ['imgPer']
 	template_name="hojapersonaje/usuarioupdate.html"
 
-# Sign Up, temporalmente redirige a la lista de usuarios
+
+###########################################
+# Sign Up
+###########################################
+
 
 def signup(request):
 	if request.method == 'POST':
@@ -97,13 +109,17 @@ def signup(request):
 			user.save()
 			user = authenticate(username=user.username, password=raw_password)
 			login(request, user)
-			return redirect('usuarios')
+			return redirect('/')
 	else:
 		form = Registro()
 	return render(request, 'signup.html', {'form': form})
 
 
-# Hoja de personaje basica
+
+###########################################
+# Hoja de personaje
+###########################################
+
 
 
 class Estadisticas(ListView):
@@ -253,7 +269,13 @@ def EstadisticasAdd(request):
 		form1 = EstadisticasAddForm()
 	return render(request, 'hojapersonaje/estadisticasadd.html', {'personaje': form1})
 
+
+
+###########################################
 # Campañas
+###########################################
+
+
 
 class Campañas(ListView):
 	model = Campaña
@@ -266,7 +288,7 @@ class CampañasDetail(DetailView):
 
 class CampañasUpdate(UpdateView):
 	model = Campaña
-	fields = ['nomCam','desCam']
+	fields = ['nomCam','desCam', 'ffinCam', 'estCam']
 	template_name="hojapersonaje/campañasupdate.html"
 	success_url = reverse_lazy('campañas')
 
@@ -286,9 +308,66 @@ def CampañasAdd(request):
 			campaña.usuCam = usuario
 			campaña.nomCam = form1.cleaned_data.get('nomCam')
 			campaña.desCam = form1.cleaned_data.get('desCam')
+			campaña.ffinCam = form1.cleaned_data.get('ffinCam')
+			campaña.estCam = form1.cleaned_data.get('estCam')
 						
 			campaña.save()
 			return HttpResponseRedirect('/hojapersonaje/campanas')
 	else:
 		form1 = CampañasAddForm()
 	return render(request, 'hojapersonaje/campañasadd.html', {'campaña': form1})
+
+
+###########################################
+# Funcion para tirar dado
+###########################################
+
+
+def PersonajeBoton(request):
+	col = request.GET.get('columna')
+	dado = random.randint(1,20)
+	id = request.GET.get('id')
+	queryset = Personaje.objects.get(idPer=id)
+	queryset.ultimaTirada = dado
+	queryset.ultimoCampo = col
+	queryset.save()
+	return HttpResponseRedirect('/hojapersonaje/estadisticasdetail/' + id)
+
+
+###########################################
+# API
+###########################################
+
+
+
+class UserAPI(viewsets.ModelViewSet):
+	"""
+	API
+	"""
+	queryset = User.objects.all()
+	serializer_class = UserSerializer
+	permission_classes = [IsAdminUser]
+
+class CampañaAPI(viewsets.ModelViewSet):
+	"""
+	API
+	"""
+	queryset = Campaña.objects.all()
+	serializer_class = CampañaSerializer
+	permission_classes = [IsAdminUser]
+
+class PersonajeAPI(viewsets.ModelViewSet):
+	"""
+	API
+	"""
+	queryset = Personaje.objects.all()
+	serializer_class = PersonajeSerializer
+	permission_classes = [IsAdminUser]
+
+class ParticipaAPI(viewsets.ModelViewSet):
+	"""
+	API
+	"""
+	queryset = Participa.objects.all()
+	serializer_class = ParticipaSerializer
+	permission_classes = [IsAdminUser]

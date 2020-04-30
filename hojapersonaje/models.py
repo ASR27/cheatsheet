@@ -24,11 +24,29 @@ def create_user_profile(sender, instance, created, **kwargs):
 
 # Tablas creadas desde 0
 
+ACT = "Activo"
+SCO = "Sin comenzar"
+PAU = "En pausa"
+FIN = "Finalizado"
+
+estado = (
+	(ACT, "Activo"),
+	(SCO, "Sin comenzar"),
+	(PAU, "En pausa"),
+	(FIN, "Finalizado"),
+)
+
+
 class Campaña(models.Model):
+	
+
 	idCam = models.AutoField(primary_key=True)
 	nomCam = models.CharField(max_length=100)
 	desCam = models.CharField(max_length=5000)
 	usuCam = models.ForeignKey(Perfil, on_delete=models.CASCADE, blank=True, null=True)
+	finiCam = models.DateField(auto_now_add=True)
+	ffinCam = models.DateField(blank=True, null=True)
+	estCam = models.CharField(max_length=20, choices=estado, default=SCO)
 
 	def __str__(self):
 		return str(self.nomCam)
@@ -52,14 +70,17 @@ class Personaje(models.Model):
 	ataPer = models.IntegerField(blank=True, null=True)
 	DGPer = models.IntegerField(blank=True, null=True)
 	MaxDGPer = models.IntegerField(blank=True, null=True)
+
 	camPer = models.ForeignKey(Campaña, on_delete=models.CASCADE, blank=True, null=True)
 	usuPer = models.ForeignKey(Perfil, on_delete=models.CASCADE, blank=True, null=True)
+
 	FUE = models.IntegerField(blank=True, null=True)
 	DES = models.IntegerField(blank=True, null=True)
 	CON = models.IntegerField(blank=True, null=True)
 	INT = models.IntegerField(blank=True, null=True)
 	SAB = models.IntegerField(blank=True, null=True)
 	CAR = models.IntegerField(blank=True, null=True)
+
 	fortaleza = models.IntegerField(blank=True, null=True)
 	reflejos = models.IntegerField(blank=True, null=True)
 	voluntad = models.IntegerField(blank=True, null=True)
@@ -97,6 +118,9 @@ class Personaje(models.Model):
 	trepar = models.IntegerField(blank=True, null=True)
 	usarObjetoMagico = models.IntegerField(blank=True, null=True)
 	usoCuerdas = models.IntegerField(blank=True, null=True)
+
+	ultimaTirada = models.IntegerField(blank=True, null=True)
+	ultimoCampo = models.CharField(max_length=50, blank=True, null=True)
 
 	def __str__(self):
 		return str(self.nomPer)

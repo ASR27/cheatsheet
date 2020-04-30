@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_extensions',
     'bootstrap4',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

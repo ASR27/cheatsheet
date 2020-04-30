@@ -5,7 +5,7 @@
 
 	<p>Participar en una nueva campaña: <button onclick="location.href='{% url 'participa-add' %}'">Nueva Participación</button></p>
 
-	<p>Nombre de campaña - Nombre de Usuario</p>
+	<p>Nombre de campaña - Nombre de Usuario - DM</p>
 	<ul>
 		{% for participa in object_list %}
 			{% if request.user.id == participa.usuPar.user.id or participa.camPar.usuCam.user.id %}

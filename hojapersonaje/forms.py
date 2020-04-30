@@ -1,9 +1,10 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
-from django.forms import formset_factory, PasswordInput, ModelChoiceField, Textarea
+from django.forms import formset_factory, PasswordInput, ModelChoiceField, Textarea, SelectDateWidget
 
 from .models import *
+from .models import estado
 
 class Registro(UserCreationForm):
 	imgPer = forms.ImageField(required=False)
@@ -23,6 +24,8 @@ class InicioSesion(forms.Form):
 class CampañasAddForm(forms.Form):
 	nomCam = forms.CharField(max_length=100)
 	desCam = forms.CharField(max_length=5000, widget=Textarea())
+	ffinCam = forms.DateField(widget=SelectDateWidget())
+	estCam = forms.ChoiceField(choices=estado)
 
 class ParticipaCreateForm(forms.Form):
 	usuPar = forms.ModelChoiceField(queryset=Perfil.objects.all())
