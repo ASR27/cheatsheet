@@ -18,6 +18,7 @@ urlpatterns = [
 	path('usuarioupdate/<int:pk>', UsuarioUpdate.as_view(), name="usuarioupdate"),
 	path('participa_add/', ParticipaCreate, name='participa-add'),
 	path('participa_delete/<int:pk>/delete/', ParticipaDelete.as_view(), name='participa-delete'),
+	path('participa_update/<int:pk>', ParticipaUpdate.as_view(), name='participaupdate'),
 	path('estadisticas/', Estadisticas.as_view(), name='estadisticas'),
 	path('estadisticasadd/', EstadisticasAdd, name='estadisticasadd'),
 	path('estadisticasdetail/<int:pk>', EstadisticasDetail.as_view(), name='estadisticasdetail'),

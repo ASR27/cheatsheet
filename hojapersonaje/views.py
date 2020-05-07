@@ -1,4 +1,4 @@
-from django.shortcuts import HttpResponse, render, redirect, HttpResponseRedirect
+from django.shortcuts import HttpResponse, render, redirect, HttpResponseRedirect, get_object_or_404
 from django.views.generic import ListView, DetailView, TemplateView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
@@ -62,6 +62,27 @@ class ParticipaDelete(DeleteView):
 	fields = '__all__'
 	success_url = reverse_lazy('participantes')
 	template_name="hojapersonaje/participa_delete.html"
+
+class ParticipaUpdate(UpdateView):
+	model = Participa
+	fields = ['perPar']
+	success_url = reverse_lazy('participantes')
+	template_name="hojapersonaje/participa_update.html"
+
+
+# def ParticipaUpdate(request, pk):
+# 	if request.method == 'POST':
+# 		form1 = ParticipaUpdateForm(request.POST, request.FILES)
+# 		if form1.is_valid():
+# 			participa = self.objects.get()
+# 			participa.perPar = form1.cleaned_data.get('perPar')
+# 			participa.save(update_fields=['perPar'])
+# 			return HttpResponseRedirect('/hojapersonaje/participalist')
+# 	else:
+# 		form1 = ParticipaUpdateForm()
+# 	return render(request, 'hojapersonaje/participa_update.html', {'participa': form1})
+
+
 
 def ErrorParticipa(request):
 	return HttpResponseRedirect('/hojapersonaje/errorparticipa')
@@ -216,6 +237,7 @@ def EstadisticasAdd(request):
 			personaje.aliPer = form1.cleaned_data.get('aliPer')
 			personaje.DGPer = form1.cleaned_data.get('DGPer')
 			personaje.MaxDGPer = form1.cleaned_data.get('MaxDGPer')
+			personaje.CAPer = form1.cleaned_data.get('CAPer')
 
 			personaje.FUE = form1.cleaned_data.get('FUE')
 			personaje.DES = form1.cleaned_data.get('DES')

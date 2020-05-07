@@ -31,7 +31,12 @@ class ParticipaCreateForm(forms.Form):
 	usuPar = forms.ModelChoiceField(queryset=Perfil.objects.all())
 	camPar = forms.ModelChoiceField(queryset=Campaña.objects.all())
 
-	
+class ParticipaUpdateForm(forms.ModelForm):
+	class Meta:
+		model = Participa
+		fields = '__all__'
+	# perPar = forms.ModelChoiceField(queryset=Personaje.objects.all())
+
 class EstadisticasAddForm(forms.Form):
 	camPer = forms.ModelChoiceField(queryset=Campaña.objects.all())
 	nomPer = forms.CharField(max_length=40)
@@ -43,6 +48,7 @@ class EstadisticasAddForm(forms.Form):
 	ataPer = forms.IntegerField()
 	DGPer = forms.IntegerField()
 	MaxDGPer = forms.IntegerField()
+	CAPer = forms.IntegerField()
 	FUE = forms.IntegerField()
 	DES = forms.IntegerField()
 	CON = forms.IntegerField()

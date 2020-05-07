@@ -1,11 +1,15 @@
 {% extends "plantilla_base.html" %}
 
 {% block content %}
+
+<p><a href="/hojapersonaje/participa_update/{{ participa.idPar }}">Modificar</a></p>
+
 	<h2>{{ object.headline }}</h2>
 	<p>{{ object.context }}</p>
 	<p>Id Participación: {{ object.idPar }}</p>
 	<p>Campaña: {{ object.camPar }}</p>
 	<p>Usuario: {{ object.usuPar }}</p>
-	<p>Dueño: {{ object.camPar.usuCam.user.username }}</p>
+	<p>DM: {{ object.camPar.usuCam.user.username }}</p>
+	<p>Personaje: <a href="/hojapersonaje/estadisticasdetail/{{ object.perPar.idPer }}">{{ object.perPar }}</a></p>
 	<a href="/hojapersonaje/participa_delete/{{ object.idPar }}/delete">Borrar</a>
 {% endblock %}

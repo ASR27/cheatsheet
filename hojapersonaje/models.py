@@ -51,13 +51,6 @@ class Campaña(models.Model):
 	def __str__(self):
 		return str(self.nomCam)
 
-class Participa(models.Model):
-	idPar = models.AutoField(primary_key=True)
-	usuPar = models.ForeignKey(Perfil, on_delete=models.CASCADE, blank=True, null=True)
-	camPar = models.ForeignKey(Campaña, on_delete=models.CASCADE)
-
-	def __str__(self):
-		return str(self.camPar)
 
 class Personaje(models.Model):
 	idPer  = models.AutoField(primary_key=True)
@@ -70,6 +63,7 @@ class Personaje(models.Model):
 	ataPer = models.IntegerField(blank=True, null=True)
 	DGPer = models.IntegerField(blank=True, null=True)
 	MaxDGPer = models.IntegerField(blank=True, null=True)
+	CAPer = models.IntegerField(blank=True, null=True)
 
 	camPer = models.ForeignKey(Campaña, on_delete=models.CASCADE, blank=True, null=True)
 	usuPer = models.ForeignKey(Perfil, on_delete=models.CASCADE, blank=True, null=True)
@@ -125,7 +119,14 @@ class Personaje(models.Model):
 	def __str__(self):
 		return str(self.nomPer)
 
+class Participa(models.Model):
+	idPar = models.AutoField(primary_key=True)
+	usuPar = models.ForeignKey(Perfil, on_delete=models.CASCADE, blank=True, null=True)
+	camPar = models.ForeignKey(Campaña, on_delete=models.CASCADE, blank=True, null=True)
+	perPar = models.ForeignKey(Personaje, on_delete=models.CASCADE, blank=True, null=True)
 
+	def __str__(self):
+		return str(self.camPar)
 
 
 
