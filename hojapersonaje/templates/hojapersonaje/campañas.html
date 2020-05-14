@@ -1,13 +1,26 @@
 {% extends "plantilla_base.html" %}
 
 {% block content %}
-	<h2>Campañas</h2>
+</br>
+<div class="container">
+		<div class="row justify-content-start">
+			<div class="col-5">
+				<button onclick="location.href='{% url 'campanasadd' %}'">Crear Campaña</button>
+			</div>
+		</div>
+	</div>
 
-	<p><button onclick="location.href='{% url 'campanasadd' %}'">Crear</button> Crear Campaña</p>
+</br>
 
-	<ul>
-		{% for campaña in object_list %}
-			<li><a href="/hojapersonaje/campanasdetail/{{ campaña.pk }}"> {{campaña.nomCam}} </a></li>
-		{% endfor %}
-	</ul>
+	<div class="container">
+		<div class="row justify-content-start">
+			<div class="col-5">
+				<ul>
+					{% for campaña in object_list %}
+						<li><a href="/hojapersonaje/campanasdetail/{{ campaña.pk }}"> {{campaña.nomCam}} </a></li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+	</div>
 {% endblock %}

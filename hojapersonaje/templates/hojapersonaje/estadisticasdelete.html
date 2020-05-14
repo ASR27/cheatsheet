@@ -3,11 +3,16 @@
 {% block content %}
 
 {% if request.user.id == object.usuPer.user.id %}
-
-<form action="" method="post">{% csrf_token %}
-    <p>Are you sure you want to delete "{{ object.nomPer }}"?</p>
-    <input type="submit" value="Confirm" />
-</form>
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-6">
+				<form action="" method="post">{% csrf_token %}
+				    <p>¿Seguro que quieres borrar "{{ object.nomPer }}"?</p>
+				    <input type="submit" value="Confirm" />
+				</form>
+			</div>
+		</div>
+	</div>
 
 {% else %}
 <p>No tienes permisos para esto</p>

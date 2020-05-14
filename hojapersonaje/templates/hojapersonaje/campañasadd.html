@@ -1,18 +1,23 @@
 {% extends 'plantilla_base.html' %}
 
 {% block content %}
-<h2>Crear Campaña</h2>
-<form method="post" enctype="multipart/form-data">
-	{% csrf_token %}
-	<p>nombre de la campaña</p>
-	{{ campaña.nomCam }}<br>
-	<p>descripción</p>
-	{{ campaña.desCam }}<br>
-	<p>Fecha estimada de finalización</p>
-	{{ campaña.ffinCam }}<br>
-	<p>Estado</p>
-	{{ campaña.estCam }}<br>
-	{{ form.as_p }}<br>
-	<input type="submit" value="Crear" />
-</form>
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-6">
+				<form method="post" enctype="multipart/form-data">
+					{% csrf_token %}
+					<p>Nombre de la campaña</p>
+					{{ campaña.nomCam }}<br>
+					<p>Descripción</p>
+					{{ campaña.desCam }}<br>
+					<p>Fecha estimada de finalización</p>
+					{{ campaña.ffinCam }}<br>
+					<p>Estado</p>
+					{{ campaña.estCam }}<br>
+					{{ form.as_p }}<br>
+					<input type="submit" value="Crear" />
+				</form>
+			</div>
+		</div>
+	</div>
 {% endblock %}

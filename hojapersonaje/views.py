@@ -65,22 +65,15 @@ class ParticipaDelete(DeleteView):
 
 class ParticipaUpdate(UpdateView):
 	model = Participa
-	fields = ['perPar']
+	form_class = ParticipaUpdateForm
+	#fields = ['perPar']
 	success_url = reverse_lazy('participantes')
 	template_name="hojapersonaje/participa_update.html"
 
-
-# def ParticipaUpdate(request, pk):
-# 	if request.method == 'POST':
-# 		form1 = ParticipaUpdateForm(request.POST, request.FILES)
-# 		if form1.is_valid():
-# 			participa = self.objects.get()
-# 			participa.perPar = form1.cleaned_data.get('perPar')
-# 			participa.save(update_fields=['perPar'])
-# 			return HttpResponseRedirect('/hojapersonaje/participalist')
-# 	else:
-# 		form1 = ParticipaUpdateForm()
-# 	return render(request, 'hojapersonaje/participa_update.html', {'participa': form1})
+	def get_form_kwargs(self):
+		kwargs = super(ParticipaUpdate, self).get_form_kwargs()
+		kwargs.update({'usuPer': self.kwargs.get('usuPer')})
+		return kwargs
 
 
 
@@ -111,6 +104,7 @@ class UsuarioUpdate(UpdateView):
 	model = Perfil
 	fields = ['imgPer']
 	template_name="hojapersonaje/usuarioupdate.html"
+	success_url = reverse_lazy('usuarios')
 
 
 ###########################################

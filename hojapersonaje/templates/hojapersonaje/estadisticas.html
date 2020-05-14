@@ -1,15 +1,30 @@
 {% extends 'plantilla_base.html' %}
 
 {% block content %}
+</br>
 
-	<p>Crear personaje<button onclick="location.href='{% url 'estadisticasadd' %}'">Crear</button></p>
+	<div class="container">
+		<div class="row justify-content-start">
+			<div class="col-5">
+				<button onclick="location.href='{% url 'estadisticasadd' %}'">Crear Personaje</button>
+			</div>
+		</div>
+	</div>
 
-	<ul>
-		{% for personaje in object_list %}
-			{% if request.user.id == personaje.usuPer.user.id %}
-				<li><a href="/hojapersonaje/estadisticasdetail/{{ personaje.pk }}">{{personaje.nomPer}}</a></li>
-			{% endif %}
-		{% endfor %}
-	</ul>
+</br>
+
+	<div class="container">
+		<div class="row justify-content-start">
+			<div class="col-5">
+				<ul>
+					{% for personaje in object_list %}
+						{% if request.user.id == personaje.usuPer.user.id %}
+							<li><a href="/hojapersonaje/estadisticasdetail/{{ personaje.pk }}">{{personaje.nomPer}}</a></li>
+						{% endif %}
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+	</div>
 
 {% endblock %}

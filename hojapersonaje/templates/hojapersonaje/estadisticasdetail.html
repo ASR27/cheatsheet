@@ -1,286 +1,322 @@
 {% extends 'plantilla_base.html' %}
 
 {% block content %}
-
-	<a href="/hojapersonaje/estadisticasupdate/{{ personaje.idPer }}">Modificar</a>
-	<a href="/hojapersonaje/estadisticasdelete/{{ personaje.idPer }}/delete">Borrar</a>
-
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-6">
+				<a href="/hojapersonaje/estadisticasupdate/{{ personaje.idPer }}">Modificar</a>
+			</div>
+			<div class="col-6">
+				<a href="/hojapersonaje/estadisticasdelete/{{ personaje.idPer }}/delete">Borrar</a>
+			</div>
+		</div>
+	</div>
+</br>
+</br>
 {% if request.user.id == object.usuPer.user.id %}
+<div class="container">
+	<div class="row justify-content-start">
+		<div class="col-3">
+			<p>Nombre: {{ object.nomPer }}</p>
+			<p>Nivel: {{ object.nivPer }}</p>
+			<p>Ataque Base: {{ object.ataPer }}</p>
+			<p>Clase: {{ object.claPer }}</p>
+			<p>Raza: {{ object.razPer }}</p>
+			<p>Genero: {{ object.genPer }}</p>
+			<p>Alineamiento: {{ object.aliPer }}</p>
+			<p>Vida Máxima: {{ object.maxDGPer }}</p>
+			<p>Vida Actual: {{ object.DGPer }}</p>
+			<p>CA: {{ object.CAPer }}</p>
 
-	<p>Nombre: {{ object.nomPer }}</p>
-	<p>Nivel: {{ object.nivPer }}</p>
-	<p>Ataque Base: {{ object.ataPer }}</p>
-	<p>Clase: {{ object.claPer }}</p>
-	<p>Raza: {{ object.razPer }}</p>
-	<p>Genero: {{ object.genPer }}</p>
-	<p>Alineamiento: {{ object.aliPer }}</p>
-	<p>Vida Máxima: {{ object.maxDGPer }}</p>
-	<p>Vida Actual: {{ object.DGPer }}</p>
-	<p>CA: {{ object.CAPer }}</p>
+			</br>
 
-	<p>Fuerza: {{ object.FUE }}</p>
-	<p>Destreza: {{ object.DES }}</p>
-	<p>Constitución: {{ object.CON }}</p>
-	<p>Inteligencia: {{ object.INT }}</p>
-	<p>Sabiduría: {{ object.SAB }}</p>
-	<p>Carisma: {{ object.CAR }}</p>
+			<p>Ultima Tirada: {{ object.ultimaTirada }}</p>
+			<p>Ultimo Campo: {{ object.ultimoCampo }}</p>
+		</div>
 
 
-
-	<p>Fortaleza: {{ object.fortaleza }}
-		<a href="/personajeboton?columna=fortaleza&id={{ personaje.idPer }}">Tirar dado</a>
-		{% if object.ultimoCampo == "fortaleza" %}
-			<span>{{ object.ultimaTirada|add:object.fortaleza }}</span>
-		{% endif %}</p>
-	<p>Refeljos: {{ object.reflejos }}
-		<a href="/personajeboton?columna=reflejos&id={{ personaje.idPer }}">Tirar dado</a>
-		{% if object.ultimoCampo == "reflejos" %}
-			<span>{{ object.ultimaTirada|add:object.reflejos }}</span>
-		{% endif %}</p>
-	<p>Voluntad: {{ object.voluntad }}
-		<a href="/personajeboton?columna=voluntad&id={{ personaje.idPer }}">Tirar dado</a>
-		{% if object.ultimoCampo == "voluntad" %}
-			<span>{{ object.ultimaTirada|add:object.voluntad }}</span>
-		{% endif %}</p>
+		<div class="col-3">
+			<p>Fuerza: {{ object.FUE }}</p>
+			<p>Destreza: {{ object.DES }}</p>
+			<p>Constitución: {{ object.CON }}</p>
+			<p>Inteligencia: {{ object.INT }}</p>
+			<p>Sabiduría: {{ object.SAB }}</p>
+			<p>Carisma: {{ object.CAR }}</p>
 
 
 
+			<p>Fortaleza: {{ object.fortaleza }}
+				<a href="/personajeboton?columna=fortaleza&id={{ personaje.idPer }}">Tirar dado</a>
+				{% if object.ultimoCampo == "fortaleza" %}
+					<span>{{ object.ultimaTirada|add:object.fortaleza }}</span>
+				{% endif %}</p>
+			<p>Refeljos: {{ object.reflejos }}
+				<a href="/personajeboton?columna=reflejos&id={{ personaje.idPer }}">Tirar dado</a>
+				{% if object.ultimoCampo == "reflejos" %}
+					<span>{{ object.ultimaTirada|add:object.reflejos }}</span>
+				{% endif %}</p>
+			<p>Voluntad: {{ object.voluntad }}
+				<a href="/personajeboton?columna=voluntad&id={{ personaje.idPer }}">Tirar dado</a>
+				{% if object.ultimoCampo == "voluntad" %}
+					<span>{{ object.ultimaTirada|add:object.voluntad }}</span>
+				{% endif %}</p>
+		</div>
 
-	<p>Abrir Cerraduras: {{ object.abrirCerraduras }}
-		<a href="/personajeboton?columna=abrirCerraduras&id={{ personaje.idPer }}">Tirar dado</a>
-		{% if object.ultimoCampo == "abrirCerraduras" %}
-			<span>{{ object.ultimaTirada|add:object.abrirCerraduras }}</span>
-		{% endif %}</p>
-	<p>Artesanía: {{ object.artesania }}
-	<a href="/personajeboton?columna=artesania&id={{ personaje.idPer }}">Tirar dado</a>
-		{% if object.ultimoCampo == "artesania" %}
-			<span>{{ object.ultimaTirada|add:object.artesania }}</span>
-		{% endif %}</p>
-	<p>Averiguar Intenciones: {{ object.averiguarIntenciones }}
-	<a href="/personajeboton?columna=averiguarIntenciones&id={{ personaje.idPer }}">Tirar dado</a>
-		{% if object.ultimoCampo == "averiguarIntenciones" %}
-			<span>{{ object.ultimaTirada|add:object.averiguarIntenciones }}</span>
-		{% endif %}</p>
-	<p>Avistar: {{ object.avistar }}
-		<a href="/personajeboton?columna=avistar&id={{ personaje.idPer }}">Tirar dado</a>
-		{% if object.ultimoCampo == "avistar" %}
-			<span>{{ object.ultimaTirada|add:object.avistar }}</span>
-		{% endif %}</p>
-	<p>Buscar: {{ object.buscar }}
-		<a href="/personajeboton?columna=buscar&id={{ personaje.idPer }}">Tirar dado</a>
-		{% if object.ultimoCampo == "buscar" %}
-			<span>{{ object.ultimaTirada|add:object.buscar }}</span>
-		{% endif %}</p>
-	<p>Concentración: {{ object.concentracion }}
-		<a href="/personajeboton?columna=concentracion&id={{ personaje.idPer }}">Tirar dado</a>
-		{% if object.ultimoCampo == "concentracion" %}
-			<span>{{ object.ultimaTirada|add:object.concentracion }}</span>
-		{% endif %}</p>
-	<p>Conocimiento de Conjuros: {{ object.conocimientoConjuros }}
-		<a href="/personajeboton?columna=conocimientoConjuros&id={{ personaje.idPer }}">Tirar dado</a>
-		{% if object.ultimoCampo == "conocimientoConjuros" %}
-			<span>{{ object.ultimaTirada|add:object.conocimientoConjuros }}</span>
-		{% endif %}</p>
-	<p>Descifrar Escrituras: {{ object.descifrarEscrituras }}
-		<a href="/personajeboton?columna=descifrarEscrituras&id={{ personaje.idPer }}">Tirar dado</a>
-		{% if object.ultimoCampo == "descifrarEscrituras" %}
-			<span>{{ object.ultimaTirada|add:object.descifrarEscrituras }}</span>
-		{% endif %}</p>
-	<p>Diplomacia: {{ object.diplomacia }}
-		<a href="/personajeboton?columna=diplomacia&id={{ personaje.idPer }}">Tirar dado</a>
-		{% if object.ultimoCampo == "diplomacia" %}
-			<span>{{ object.ultimaTirada|add:object.diplomacia }}</span>
-		{% endif %}</p>
-	<p>Disfrazarse: {{ object.disfrazarse }}
-		<a href="/personajeboton?columna=disfrazarse&id={{ personaje.idPer }}">Tirar dado</a>
-		{% if object.ultimoCampo == "disfrazarse" %}
-			<span>{{ object.ultimaTirada|add:object.disfrazarse }}</span>
-		{% endif %}</p>
-	<p>Engañar: {{ object.engañar }}
-		<a href="/personajeboton?columna=engañar&id={{ personaje.idPer }}">Tirar dado</a>
-		{% if object.ultimoCampo == "engañar" %}
-			<span>{{ object.ultimaTirada|add:object.engañar }}</span>
-		{% endif %}</p>
-	<p>Equilibrio: {{ object.equilibrio }}
-		<a href="/personajeboton?columna=equilibrio&id={{ personaje.idPer }}">Tirar dado</a>
-		{% if object.ultimoCampo == "equilibrio" %}
-			<span>{{ object.ultimaTirada|add:object.equilibrio }}</span>
-		{% endif %}</p>
-	<p>Esconderse: {{ object.esconderse }}
-		<a href="/personajeboton?columna=esconderse&id={{ personaje.idPer }}">Tirar dado</a>
-		{% if object.ultimoCampo == "esconderse" %}
-			<span>{{ object.ultimaTirada|add:object.esconderse }}</span>
-		{% endif %}</p>
-	<p>Escuchar: {{ object.escuchar }}
-		<a href="/personajeboton?columna=escuchar&id={{ personaje.idPer }}">Tirar dado</a>
-		{% if object.ultimoCampo == "escuchar" %}
-			<span>{{ object.ultimaTirada|add:object.escuchar }}</span>
-		{% endif %}</p>
-	<p>Falsificar: {{ object.falsificar }}
-		<a href="/personajeboton?columna=falsificar&id={{ personaje.idPer }}">Tirar dado</a>
-		{% if object.ultimoCampo == "falsificar" %}
-			<span>{{ object.ultimaTirada|add:object.falsificar }}</span>
-		{% endif %}</p>
-	<p>Interpretar: {{ object.interpretar }}
-		<a href="/personajeboton?columna=interpretar&id={{ personaje.idPer }}">Tirar dado</a>
-		{% if object.ultimoCampo == "interpretar" %}
-			<span>{{ object.ultimaTirada|add:object.interpretar }}</span>
-		{% endif %}</p>
-	<p>Intimidar: {{ object.intimidar }}
-		<a href="/personajeboton?columna=intimidar&id={{ personaje.idPer }}">Tirar dado</a>
-		{% if object.ultimoCampo == "intimidar" %}
-			<span>{{ object.ultimaTirada|add:object.intimidar }}</span>
-		{% endif %}</p>
-	<p>Inutilizar Mecanismo: {{ object.inutilizarMecanismo }}
-		<a href="/personajeboton?columna=inutilizarMecanismo&id={{ personaje.idPer }}">Tirar dado</a>
-		{% if object.ultimoCampo == "inutilizarMecanismo" %}
-			<span>{{ object.ultimaTirada|add:object.inutilizarMecanismo }}</span>
-		{% endif %}</p>
-	<p>Juego de Manos: {{ object.juegoManos }}
-		<a href="/personajeboton?columna=juegoManos&id={{ personaje.idPer }}">Tirar dado</a>
-		{% if object.ultimoCampo == "juegoManos" %}
-			<span>{{ object.ultimaTirada|add:object.juegoManos }}</span>
-		{% endif %}</p>
-	<p>Montar: {{ object.montar }}
-		<a href="/personajeboton?columna=montar&id={{ personaje.idPer }}">Tirar dado</a>
-		{% if object.ultimoCampo == "montar" %}
-			<span>{{ object.ultimaTirada|add:object.montar }}</span>
-		{% endif %}</p>
-	<p>Moverse Sigilosamente: {{ object.moverseSigilosamente }}
-		<a href="/personajeboton?columna=moverseSigilosamente&id={{ personaje.idPer }}">Tirar dado</a>
-		{% if object.ultimoCampo == "moverseSigilosamente" %}
-			<span>{{ object.ultimaTirada|add:object.moverseSigilosamente }}</span>
-		{% endif %}</p>
-	<p>Nadar: {{ object.nadar }}
-		<a href="/personajeboton?columna=nadar&id={{ personaje.idPer }}">Tirar dado</a>
-		{% if object.ultimoCampo == "nadar" %}
-			<span>{{ object.ultimaTirada|add:object.nadar }}</span>
-		{% endif %}</p>
-	<p>Oficio: {{ object.oficio }}
-		<a href="/personajeboton?columna=oficio&id={{ personaje.idPer }}">Tirar dado</a>
-		{% if object.ultimoCampo == "oficio" %}
-			<span>{{ object.ultimaTirada|add:object.oficio }}</span>
-		{% endif %}</p>
-	<p>Piruetas: {{ object.piruetas }}
-		<a href="/personajeboton?columna=piruetas&id={{ personaje.idPer }}">Tirar dado</a>
-		{% if object.ultimoCampo == "piruetas" %}
-			<span>{{ object.ultimaTirada|add:object.piruetas }}</span>
-		{% endif %}</p>
-	<p>Reunir Información: {{ object.reunirInformacion }}
-		<a href="/personajeboton?columna=reunirInformacion&id={{ personaje.idPer }}">Tirar dado</a>
-		{% if object.ultimoCampo == "reunirInformacion" %}
-			<span>{{ object.ultimaTirada|add:object.reunirInformacion }}</span>
-		{% endif %}</p>
-	<p>Saber: {{ object.saber }}
-		<a href="/personajeboton?columna=saber&id={{ personaje.idPer }}">Tirar dado</a>
-		{% if object.ultimoCampo == "saber" %}
-			<span>{{ object.ultimaTirada|add:object.saber }}</span>
-		{% endif %}</p>
-	<p>Saltar: {{ object.saltar }}
-		<a href="/personajeboton?columna=saltar&id={{ personaje.idPer }}">Tirar dado</a>
-		{% if object.ultimoCampo == "saltar" %}
-			<span>{{ object.ultimaTirada|add:object.saltar }}</span>
-		{% endif %}</p>
-	<p>Sanar: {{ object.sanar }}
-		<a href="/personajeboton?columna=sanar&id={{ personaje.idPer }}">Tirar dado</a>
-		{% if object.ultimoCampo == "avistar" %}
-			<span>{{ object.ultimaTirada|add:object.sanar }}</span>
-		{% endif %}</p>
-	<p>Supervivencia: {{ object.supervivencia }}
-		<a href="/personajeboton?columna=supervivencia&id={{ personaje.idPer }}">Tirar dado</a>
-		{% if object.ultimoCampo == "supervivencia" %}
-			<span>{{ object.ultimaTirada|add:object.supervivencia }}</span>
-		{% endif %}</p>
-	<p>Tasación: {{ object.tasacion }}
-		<a href="/personajeboton?columna=tasacion&id={{ personaje.idPer }}">Tirar dado</a>
-		{% if object.ultimoCampo == "tasacion" %}
-			<span>{{ object.ultimaTirada|add:object.tasacion }}</span>
-		{% endif %}</p>
-	<p>Trato con Animales: {{ object.tratoAnimales }}
-		<a href="/personajeboton?columna=tratoAnimales&id={{ personaje.idPer }}">Tirar dado</a>
-		{% if object.ultimoCampo == "tratoAnimales" %}
-			<span>{{ object.ultimaTirada|add:object.tratoAnimales }}</span>
-		{% endif %}</p>
-	<p>Trepar: {{ object.trepar }}
-		<a href="/personajeboton?columna=trepar&id={{ personaje.idPer }}">Tirar dado</a>
-		{% if object.ultimoCampo == "trepar" %}
-			<span>{{ object.ultimaTirada|add:object.trepar }}</span>
-		{% endif %}</p>
-	<p>Usar Objeto Mágico: {{ object.usarObjetoMagico }}
-		<a href="/personajeboton?columna=usarObjetoMagico&id={{ personaje.idPer }}">Tirar dado</a>
-		{% if object.ultimoCampo == "usarObjetoMagico" %}
-			<span>{{ object.ultimaTirada|add:object.usarObjetoMagico }}</span>
-		{% endif %}</p>
-	<p>Uso de Cuerdas: {{ object.usoCuerdas }}
-		<a href="/personajeboton?columna=usoCuerdas&id={{ personaje.idPer }}">Tirar dado</a>
-		{% if object.ultimoCampo == "usoCuerdas" %}
-			<span>{{ object.ultimaTirada|add:object.usoCuerdas }}</span>
-		{% endif %}</p>
 
-	<p>Ultima Tirada: {{ object.ultimaTirada }}</p>
-	<p>Ultimo Campo: {{ object.ultimoCampo }}</p>
+		<div class="col-3">
+			<p>Abrir Cerraduras: {{ object.abrirCerraduras }}
+				<a href="/personajeboton?columna=abrirCerraduras&id={{ personaje.idPer }}">Tirar dado</a>
+				{% if object.ultimoCampo == "abrirCerraduras" %}
+					<span>{{ object.ultimaTirada|add:object.abrirCerraduras }}</span>
+				{% endif %}</p>
+			<p>Artesanía: {{ object.artesania }}
+			<a href="/personajeboton?columna=artesania&id={{ personaje.idPer }}">Tirar dado</a>
+				{% if object.ultimoCampo == "artesania" %}
+					<span>{{ object.ultimaTirada|add:object.artesania }}</span>
+				{% endif %}</p>
+			<p>Averiguar Intenciones: {{ object.averiguarIntenciones }}
+			<a href="/personajeboton?columna=averiguarIntenciones&id={{ personaje.idPer }}">Tirar dado</a>
+				{% if object.ultimoCampo == "averiguarIntenciones" %}
+					<span>{{ object.ultimaTirada|add:object.averiguarIntenciones }}</span>
+				{% endif %}</p>
+			<p>Avistar: {{ object.avistar }}
+				<a href="/personajeboton?columna=avistar&id={{ personaje.idPer }}">Tirar dado</a>
+				{% if object.ultimoCampo == "avistar" %}
+					<span>{{ object.ultimaTirada|add:object.avistar }}</span>
+				{% endif %}</p>
+			<p>Buscar: {{ object.buscar }}
+				<a href="/personajeboton?columna=buscar&id={{ personaje.idPer }}">Tirar dado</a>
+				{% if object.ultimoCampo == "buscar" %}
+					<span>{{ object.ultimaTirada|add:object.buscar }}</span>
+				{% endif %}</p>
+			<p>Concentración: {{ object.concentracion }}
+				<a href="/personajeboton?columna=concentracion&id={{ personaje.idPer }}">Tirar dado</a>
+				{% if object.ultimoCampo == "concentracion" %}
+					<span>{{ object.ultimaTirada|add:object.concentracion }}</span>
+				{% endif %}</p>
+			<p>Conocimiento de Conjuros: {{ object.conocimientoConjuros }}
+				<a href="/personajeboton?columna=conocimientoConjuros&id={{ personaje.idPer }}">Tirar dado</a>
+				{% if object.ultimoCampo == "conocimientoConjuros" %}
+					<span>{{ object.ultimaTirada|add:object.conocimientoConjuros }}</span>
+				{% endif %}</p>
+			<p>Descifrar Escrituras: {{ object.descifrarEscrituras }}
+				<a href="/personajeboton?columna=descifrarEscrituras&id={{ personaje.idPer }}">Tirar dado</a>
+				{% if object.ultimoCampo == "descifrarEscrituras" %}
+					<span>{{ object.ultimaTirada|add:object.descifrarEscrituras }}</span>
+				{% endif %}</p>
+			<p>Diplomacia: {{ object.diplomacia }}
+				<a href="/personajeboton?columna=diplomacia&id={{ personaje.idPer }}">Tirar dado</a>
+				{% if object.ultimoCampo == "diplomacia" %}
+					<span>{{ object.ultimaTirada|add:object.diplomacia }}</span>
+				{% endif %}</p>
+			<p>Disfrazarse: {{ object.disfrazarse }}
+				<a href="/personajeboton?columna=disfrazarse&id={{ personaje.idPer }}">Tirar dado</a>
+				{% if object.ultimoCampo == "disfrazarse" %}
+					<span>{{ object.ultimaTirada|add:object.disfrazarse }}</span>
+				{% endif %}</p>
+			<p>Engañar: {{ object.engañar }}
+				<a href="/personajeboton?columna=engañar&id={{ personaje.idPer }}">Tirar dado</a>
+				{% if object.ultimoCampo == "engañar" %}
+					<span>{{ object.ultimaTirada|add:object.engañar }}</span>
+				{% endif %}</p>
+			<p>Equilibrio: {{ object.equilibrio }}
+				<a href="/personajeboton?columna=equilibrio&id={{ personaje.idPer }}">Tirar dado</a>
+				{% if object.ultimoCampo == "equilibrio" %}
+					<span>{{ object.ultimaTirada|add:object.equilibrio }}</span>
+				{% endif %}</p>
+			<p>Esconderse: {{ object.esconderse }}
+				<a href="/personajeboton?columna=esconderse&id={{ personaje.idPer }}">Tirar dado</a>
+				{% if object.ultimoCampo == "esconderse" %}
+					<span>{{ object.ultimaTirada|add:object.esconderse }}</span>
+				{% endif %}</p>
+			<p>Escuchar: {{ object.escuchar }}
+				<a href="/personajeboton?columna=escuchar&id={{ personaje.idPer }}">Tirar dado</a>
+				{% if object.ultimoCampo == "escuchar" %}
+					<span>{{ object.ultimaTirada|add:object.escuchar }}</span>
+				{% endif %}</p>
+			<p>Falsificar: {{ object.falsificar }}
+				<a href="/personajeboton?columna=falsificar&id={{ personaje.idPer }}">Tirar dado</a>
+				{% if object.ultimoCampo == "falsificar" %}
+					<span>{{ object.ultimaTirada|add:object.falsificar }}</span>
+				{% endif %}</p>
+			<p>Interpretar: {{ object.interpretar }}
+				<a href="/personajeboton?columna=interpretar&id={{ personaje.idPer }}">Tirar dado</a>
+				{% if object.ultimoCampo == "interpretar" %}
+					<span>{{ object.ultimaTirada|add:object.interpretar }}</span>
+				{% endif %}</p>
+			<p>Intimidar: {{ object.intimidar }}
+				<a href="/personajeboton?columna=intimidar&id={{ personaje.idPer }}">Tirar dado</a>
+				{% if object.ultimoCampo == "intimidar" %}
+					<span>{{ object.ultimaTirada|add:object.intimidar }}</span>
+				{% endif %}</p>
+		</div>
+		<div class="col-3">
+			<p>Inutilizar Mecanismo: {{ object.inutilizarMecanismo }}
+				<a href="/personajeboton?columna=inutilizarMecanismo&id={{ personaje.idPer }}">Tirar dado</a>
+				{% if object.ultimoCampo == "inutilizarMecanismo" %}
+					<span>{{ object.ultimaTirada|add:object.inutilizarMecanismo }}</span>
+				{% endif %}</p>
+			<p>Juego de Manos: {{ object.juegoManos }}
+				<a href="/personajeboton?columna=juegoManos&id={{ personaje.idPer }}">Tirar dado</a>
+				{% if object.ultimoCampo == "juegoManos" %}
+					<span>{{ object.ultimaTirada|add:object.juegoManos }}</span>
+				{% endif %}</p>
+			<p>Montar: {{ object.montar }}
+				<a href="/personajeboton?columna=montar&id={{ personaje.idPer }}">Tirar dado</a>
+				{% if object.ultimoCampo == "montar" %}
+					<span>{{ object.ultimaTirada|add:object.montar }}</span>
+				{% endif %}</p>
+			<p>Moverse Sigilosamente: {{ object.moverseSigilosamente }}
+				<a href="/personajeboton?columna=moverseSigilosamente&id={{ personaje.idPer }}">Tirar dado</a>
+				{% if object.ultimoCampo == "moverseSigilosamente" %}
+					<span>{{ object.ultimaTirada|add:object.moverseSigilosamente }}</span>
+				{% endif %}</p>
+			<p>Nadar: {{ object.nadar }}
+				<a href="/personajeboton?columna=nadar&id={{ personaje.idPer }}">Tirar dado</a>
+				{% if object.ultimoCampo == "nadar" %}
+					<span>{{ object.ultimaTirada|add:object.nadar }}</span>
+				{% endif %}</p>
+			<p>Oficio: {{ object.oficio }}
+				<a href="/personajeboton?columna=oficio&id={{ personaje.idPer }}">Tirar dado</a>
+				{% if object.ultimoCampo == "oficio" %}
+					<span>{{ object.ultimaTirada|add:object.oficio }}</span>
+				{% endif %}</p>
+			<p>Piruetas: {{ object.piruetas }}
+				<a href="/personajeboton?columna=piruetas&id={{ personaje.idPer }}">Tirar dado</a>
+				{% if object.ultimoCampo == "piruetas" %}
+					<span>{{ object.ultimaTirada|add:object.piruetas }}</span>
+				{% endif %}</p>
+			<p>Reunir Información: {{ object.reunirInformacion }}
+				<a href="/personajeboton?columna=reunirInformacion&id={{ personaje.idPer }}">Tirar dado</a>
+				{% if object.ultimoCampo == "reunirInformacion" %}
+					<span>{{ object.ultimaTirada|add:object.reunirInformacion }}</span>
+				{% endif %}</p>
+			<p>Saber: {{ object.saber }}
+				<a href="/personajeboton?columna=saber&id={{ personaje.idPer }}">Tirar dado</a>
+				{% if object.ultimoCampo == "saber" %}
+					<span>{{ object.ultimaTirada|add:object.saber }}</span>
+				{% endif %}</p>
+			<p>Saltar: {{ object.saltar }}
+				<a href="/personajeboton?columna=saltar&id={{ personaje.idPer }}">Tirar dado</a>
+				{% if object.ultimoCampo == "saltar" %}
+					<span>{{ object.ultimaTirada|add:object.saltar }}</span>
+				{% endif %}</p>
+			<p>Sanar: {{ object.sanar }}
+				<a href="/personajeboton?columna=sanar&id={{ personaje.idPer }}">Tirar dado</a>
+				{% if object.ultimoCampo == "avistar" %}
+					<span>{{ object.ultimaTirada|add:object.sanar }}</span>
+				{% endif %}</p>
+			<p>Supervivencia: {{ object.supervivencia }}
+				<a href="/personajeboton?columna=supervivencia&id={{ personaje.idPer }}">Tirar dado</a>
+				{% if object.ultimoCampo == "supervivencia" %}
+					<span>{{ object.ultimaTirada|add:object.supervivencia }}</span>
+				{% endif %}</p>
+			<p>Tasación: {{ object.tasacion }}
+				<a href="/personajeboton?columna=tasacion&id={{ personaje.idPer }}">Tirar dado</a>
+				{% if object.ultimoCampo == "tasacion" %}
+					<span>{{ object.ultimaTirada|add:object.tasacion }}</span>
+				{% endif %}</p>
+			<p>Trato con Animales: {{ object.tratoAnimales }}
+				<a href="/personajeboton?columna=tratoAnimales&id={{ personaje.idPer }}">Tirar dado</a>
+				{% if object.ultimoCampo == "tratoAnimales" %}
+					<span>{{ object.ultimaTirada|add:object.tratoAnimales }}</span>
+				{% endif %}</p>
+			<p>Trepar: {{ object.trepar }}
+				<a href="/personajeboton?columna=trepar&id={{ personaje.idPer }}">Tirar dado</a>
+				{% if object.ultimoCampo == "trepar" %}
+					<span>{{ object.ultimaTirada|add:object.trepar }}</span>
+				{% endif %}</p>
+			<p>Usar Objeto Mágico: {{ object.usarObjetoMagico }}
+				<a href="/personajeboton?columna=usarObjetoMagico&id={{ personaje.idPer }}">Tirar dado</a>
+				{% if object.ultimoCampo == "usarObjetoMagico" %}
+					<span>{{ object.ultimaTirada|add:object.usarObjetoMagico }}</span>
+				{% endif %}</p>
+			<p>Uso de Cuerdas: {{ object.usoCuerdas }}
+				<a href="/personajeboton?columna=usoCuerdas&id={{ personaje.idPer }}">Tirar dado</a>
+				{% if object.ultimoCampo == "usoCuerdas" %}
+					<span>{{ object.ultimaTirada|add:object.usoCuerdas }}</span>
+				{% endif %}</p>
+		</div>
+	</div>
+</div>
+	
 
 {% else %}
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-3">
+				<p>Nombre: {{ object.nomPer }}</p>
+				<p>Nivel: {{ object.nivPer }}</p>
+				<p>Ataque Base: {{ object.ataPer }}</p>
+				<p>Clase: {{ object.claPer }}</p>
+				<p>Raza: {{ object.razPer }}</p>
+				<p>Genero: {{ object.genPer }}</p>
+				<p>Alineamiento: {{ object.aliPer }}</p>
+				<p>Vida Máxima: {{ object.maxDGPer }}</p>
+				<p>Vida Actual: {{ object.DGPer }}</p>
+				<p>CA: {{ object.CAPer }}</p>
 
-	<p>Nombre: {{ object.nomPer }}</p>
-	<p>Nivel: {{ object.nivPer }}</p>
-	<p>Ataque Base: {{ object.ataPer }}</p>
-	<p>Clase: {{ object.claPer }}</p>
-	<p>Raza: {{ object.razPer }}</p>
-	<p>Genero: {{ object.genPer }}</p>
-	<p>Alineamiento: {{ object.aliPer }}</p>
-	<p>Vida Máxima: {{ object.maxDGPer }}</p>
-	<p>Vida Actual: {{ object.DGPer }}</p>
-	<p>CA: {{ object.CAPer }}</p>
+				</br>
 
-	<p>Fuerza: {{ object.FUE }}</p>
-	<p>Destreza: {{ object.DES }}</p>
-	<p>Constitución: {{ object.CON }}</p>
-	<p>Inteligencia: {{ object.INT }}</p>
-	<p>Sabiduría: {{ object.SAB }}</p>
-	<p>Carisma: {{ object.CAR }}</p>
+				<p>Ultima Tirada: {{ object.ultimaTirada }}</p>
+				<p>Ultimo Campo: {{ object.ultimoCampo }}</p>
+			</div>
 
-	<p>Fortaleza: {{ object.fortaleza }}</p>
-	<p>Refeljos: {{ object.reflejos }}</p>
-	<p>Voluntad: {{ object.voluntad }}</p>
+			<div class="col-3">
+				<p>Fuerza: {{ object.FUE }}</p>
+				<p>Destreza: {{ object.DES }}</p>
+				<p>Constitución: {{ object.CON }}</p>
+				<p>Inteligencia: {{ object.INT }}</p>
+				<p>Sabiduría: {{ object.SAB }}</p>
+				<p>Carisma: {{ object.CAR }}</p>
 
-	<p>Abrir Cerraduras: {{ object.abrirCerraduras }}</p>
-	<p>Artesanía: {{ object.artesania }}</p>
-	<p>Averiguar Intenciones: {{ object.averiguarIntenciones }}</p>
-	<p>Avistar: {{ object.avistar }}</p>
-	<p>Buscar: {{ object.buscar }}</p>
-	<p>Concentración: {{ object.concentracion }}</p>
-	<p>Conocimiento de Conjuros: {{ object.conocimientoConjuros }}</p>
-	<p>Descifrar Escrituras: {{ object.descifrarEscrituras }}</p>
-	<p>Diplomacia: {{ object.diplomacia }}</p>
-	<p>Disfrazarse: {{ object.disfrazarse }}</p>
-	<p>Engañar: {{ object.engañar }}</p>
-	<p>Equilibrio: {{ object.equilibrio }}</p>
-	<p>Esconderse: {{ object.esconderse }}</p>
-	<p>Escuchar: {{ object.escuchar }}</p>
-	<p>Falsificar: {{ object.falsificar }}</p>
-	<p>Interpretar: {{ object.interpretar }}</p>
-	<p>Intimidar: {{ object.intimidar }}</p>
-	<p>Inutilizar Mecanismo: {{ object.inutilizarMecanismo }}</p>
-	<p>Juego de Manos: {{ object.juegoManos }}</p>
-	<p>Montar: {{ object.montar }}</p>
-	<p>Moverse Sigilosamente: {{ object.moverseSigilosamente }}</p>
-	<p>Nadar: {{ object.nadar }}</p>
-	<p>Oficio: {{ object.oficio }}</p>
-	<p>Piruetas: {{ object.piruetas }}</p>
-	<p>Reunir Información: {{ object.reunirInformacion }}</p>
-	<p>Saber: {{ object.saber }}</p>
-	<p>Saltar: {{ object.saltar }}</p>
-	<p>Sanar: {{ object.sanar }}</p>
-	<p>Supervivencia: {{ object.supervivencia }}</p>
-	<p>Tasación: {{ object.tasacion }}</p>
-	<p>Trato con Animales: {{ object.tratoAnimales }}</p>
-	<p>Trepar: {{ object.trepar }}</p>
-	<p>Usar Objeto Mágico: {{ object.usarObjetoMagico }}</p>
-	<p>Uso de Cuerdas: {{ object.usoCuerdas }}</p>
+				<p>Fortaleza: {{ object.fortaleza }}</p>
+				<p>Refeljos: {{ object.reflejos }}</p>
+				<p>Voluntad: {{ object.voluntad }}</p>
+			</div>
 
-	<p>Ultima Tirada: {{ object.ultimaTirada }}</p>
-	<p>Ultimo Campo: {{ object.ultimoCampo }}</p>
+			<div class="col-3">
+				<p>Abrir Cerraduras: {{ object.abrirCerraduras }}</p>
+				<p>Artesanía: {{ object.artesania }}</p>
+				<p>Averiguar Intenciones: {{ object.averiguarIntenciones }}</p>
+				<p>Avistar: {{ object.avistar }}</p>
+				<p>Buscar: {{ object.buscar }}</p>
+				<p>Concentración: {{ object.concentracion }}</p>
+				<p>Conocimiento de Conjuros: {{ object.conocimientoConjuros }}</p>
+				<p>Descifrar Escrituras: {{ object.descifrarEscrituras }}</p>
+				<p>Diplomacia: {{ object.diplomacia }}</p>
+				<p>Disfrazarse: {{ object.disfrazarse }}</p>
+				<p>Engañar: {{ object.engañar }}</p>
+				<p>Equilibrio: {{ object.equilibrio }}</p>
+				<p>Esconderse: {{ object.esconderse }}</p>
+				<p>Escuchar: {{ object.escuchar }}</p>
+				<p>Falsificar: {{ object.falsificar }}</p>
+				<p>Interpretar: {{ object.interpretar }}</p>
+				<p>Intimidar: {{ object.intimidar }}</p>
+			</div>
+
+			<div class="col-3">
+				<p>Inutilizar Mecanismo: {{ object.inutilizarMecanismo }}</p>
+				<p>Juego de Manos: {{ object.juegoManos }}</p>
+				<p>Montar: {{ object.montar }}</p>
+				<p>Moverse Sigilosamente: {{ object.moverseSigilosamente }}</p>
+				<p>Nadar: {{ object.nadar }}</p>
+				<p>Oficio: {{ object.oficio }}</p>
+				<p>Piruetas: {{ object.piruetas }}</p>
+				<p>Reunir Información: {{ object.reunirInformacion }}</p>
+				<p>Saber: {{ object.saber }}</p>
+				<p>Saltar: {{ object.saltar }}</p>
+				<p>Sanar: {{ object.sanar }}</p>
+				<p>Supervivencia: {{ object.supervivencia }}</p>
+				<p>Tasación: {{ object.tasacion }}</p>
+				<p>Trato con Animales: {{ object.tratoAnimales }}</p>
+				<p>Trepar: {{ object.trepar }}</p>
+				<p>Usar Objeto Mágico: {{ object.usarObjetoMagico }}</p>
+				<p>Uso de Cuerdas: {{ object.usoCuerdas }}</p>
+			</div>
+		</div>
+	</div>
+	
 
 {% endif %}
 

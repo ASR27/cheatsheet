@@ -3,11 +3,16 @@
 {% block content %}
 
 {% if request.user.id == personaje.usuPer.user.id %}
-
-<form action="" method="post">{% csrf_token %}
-	{{ form.as_p }}
-	<input type="submit" value="Update" />
-</form>
+<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-6">
+				<form action="" method="post">{% csrf_token %}
+					{{ form.as_p }}
+					<input type="submit" value="Update" />
+				</form>
+			</div>
+		</div>
+	</div>
 
 {% else %}
 

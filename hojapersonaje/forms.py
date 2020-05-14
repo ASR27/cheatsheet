@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
-from django.forms import formset_factory, PasswordInput, ModelChoiceField, Textarea, SelectDateWidget
+from django.forms import formset_factory, PasswordInput, ModelChoiceField, Textarea, SelectDateWidget, ModelForm
 
 from .models import *
 from .models import estado
@@ -34,11 +34,16 @@ class ParticipaCreateForm(forms.Form):
 class ParticipaUpdateForm(forms.ModelForm):
 	class Meta:
 		model = Participa
-		fields = '__all__'
-	# perPar = forms.ModelChoiceField(queryset=Personaje.objects.all())
+		fields = ['perPar']
+
+	def __init__(self, *args, **kwargs):
+		usuPer = kwargs.pop('usuPer')
+		super(ParticipaUpdateForm, self).__init__(*args, **kwargs)
+		self.fields['perPar'].queryset = Personaje.objects.all().filter(usuPer=2)
+
 
 class EstadisticasAddForm(forms.Form):
-	camPer = forms.ModelChoiceField(queryset=Campaña.objects.all())
+	camPer = forms.ModelChoiceField(queryset=Campaña.objects.all(), required=False)
 	nomPer = forms.CharField(max_length=40)
 	claPer = forms.CharField(max_length=20)
 	nivPer = forms.IntegerField()

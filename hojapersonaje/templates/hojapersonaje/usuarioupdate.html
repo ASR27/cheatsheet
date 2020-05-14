@@ -3,16 +3,25 @@
 {% block content %}
 
 {% if request.user.id == perfil.user.id %}
-
-<form method="post">{% csrf_token %}
-	{{ form.as_p }}
-	<input type="submit" value="Update" />
-</form>
+<div class="container">
+	<div class="row justify-content-start">
+		<div class="col-5">
+			<form method="post">{% csrf_token %}
+				{{ form.as_p }}
+				<input type="submit" value="Update" />
+			</form>
+		</div>
+	</div>
+</div>
 
 {% else %}
-
-<p>No tienes permisos para esto</p>
-
+<div class="container">
+	<div class="row justify-content-start">
+		<div class="col-5">
+			<p>No tienes permisos para esto</p>
+		</div>
+	</div>
+</div>
 {% endif %}
 
 {% endblock %}

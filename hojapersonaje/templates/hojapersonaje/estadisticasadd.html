@@ -1,130 +1,135 @@
 {% extends 'plantilla_base.html' %}
 
 {% block content %}
-<h2>Crear Personaje</h2>
+	
 <form method="post" enctype="multipart/form-data">
 	{% csrf_token %}
 
-	<h3>Campaña</h3>
-	<p>Campaña a la que pertenece</p>
-	{{ personaje.camPer}}<br>
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-3">
+				
+				<p>Campaña a la que pertenece
+				{{ personaje.camPer}}</p>
 
-	<h3>Cualidades Generales</h3>
-	<p>nombre</p>
-	{{ personaje.nomPer }}<br>
-	<p>clase</p>
-	{{ personaje.claPer }}<br>
-	<p>nivel</p>
-	{{ personaje.nivPer }}<br>
-	<p>Ataque Base</p>
-	{{ personaje.ataPer }}<br>
-	<p>raza</p>
-	{{ personaje.razPer }}<br>
-	<p>genero</p>
-	{{ personaje.genPer }}<br>
-	<p>alineamimento</p>
-	{{ personaje.aliPer }}<br>
-	<p>Vida Máxima</p>
-	{{ personaje.MaxDGPer }}<br>
-	<p>Vida Actual</p>
-	{{ personaje.DGPer }}<br>
-	<p>CA</p>
-	{{ personaje.CAPer }}<br>
-	<br>
+				<p>nombre
+				{{ personaje.nomPer }}
+				<p>clase</p>
+				{{ personaje.claPer }}
+				<p>nivel</p>
+				{{ personaje.nivPer }}
+				<p>Ataque Base</p>
+				{{ personaje.ataPer }}
+				<p>raza</p>
+				{{ personaje.razPer }}
+				<p>genero</p>
+				{{ personaje.genPer }}
+				<p>alineamimento</p>
+				{{ personaje.aliPer }}
+				<p>Vida Máxima</p>
+				{{ personaje.MaxDGPer }}
+				<p>Vida Actual</p>
+				{{ personaje.DGPer }}
+				<p>CA</p>
+				{{ personaje.CAPer }}
+				<br>
+			</div>
+			<div class="col-3">
+				<p>Fuerza</p>
+				{{ personaje.FUE }}<br>
+				<p>Destreza</p>
+				{{ personaje.DES }}<br>
+				<p>Constitución</p>
+				{{ personaje.CON }}<br>
+				<p>Inteligencia</p>
+				{{ personaje.INT }}<br>
+				<p>Sabiduría</p>
+				{{ personaje.SAB }}<br>
+				<p>Carisma</p>
+				{{ personaje.CAR }}<br>
+				<br>
 
-	<h3>Características</h3>
-	<p>Fuerza</p>
-	{{ personaje.FUE }}<br>
-	<p>Destreza</p>
-	{{ personaje.DES }}<br>
-	<p>Constitución</p>
-	{{ personaje.CON }}<br>
-	<p>Inteligencia</p>
-	{{ personaje.INT }}<br>
-	<p>Sabiduría</p>
-	{{ personaje.SAB }}<br>
-	<p>Carisma</p>
-	{{ personaje.CAR }}<br>
-	<br>
-
-	<h3>Salvaciones</h3>
-	<p>Fortaleza</p>
-	{{ personaje.fortaleza }}<br>
-	<p>Reflejos</p>
-	{{ personaje.reflejos }}<br>
-	<p>Voluntad</p>
-	{{ personaje.voluntad }}<br>
-
-	<h3>Habilidades</h3>
-	<p>Abrir cerraduras</p>
-	{{ personaje.abrirCerraduras }}<br>
-	<p>Artesanía</p>
-	{{ personaje.artesania }}<br>
-	<p>Averiguar Intenciones</p>
-	{{ personaje.averiguarIntenciones }}<br>
-	<p>Avistar</p>
-	{{ personaje.avistar }}<br>
-	<p>Buscar</p>
-	{{ personaje.buscar }}<br>
-	<p>Concentración</p>
-	{{ personaje.concentracion }}<br>
-	<p>Conocimiento de Conjuros</p>
-	{{ personaje.conocimientoConjuros }}<br>
-	<p>Descifrar Escrituras</p>
-	{{ personaje.descifrarEscrituras }}<br>
-	<p>Diplomacia</p>
-	{{ personaje.diplomacia }}<br>
-	<p>Disfrazarse</p>
-	{{ personaje.disfrazarse }}<br>
-	<p>Engañar</p>
-	{{ personaje.engañar }}<br>
-	<p>Equilibrio</p>
-	{{ personaje.equilibrio }}<br>
-	<p>Esconderse</p>
-	{{ personaje.esconderse }}<br>
-	<p>Escuchar</p>
-	{{ personaje.escuchar }}<br>
-	<p>Falsificar</p>
-	{{ personaje.falsificar }}<br>
-	<p>Interpretar</p>
-	{{ personaje.interpretar }}<br>
-	<p>Intimidar</p>
-	{{ personaje.intimidar }}<br>
-	<p>Inutilizar Mecanismos</p>
-	{{ personaje.inutilizarMecanismo }}<br>
-	<p>Juego de Manos</p>
-	{{ personaje.juegoManos }}<br>
-	<p>Montar</p>
-	{{ personaje.montar }}<br>
-	<p>Moverse Sigilosamente</p>
-	{{ personaje.moverseSigilosamente }}<br>
-	<p>Nadar</p>
-	{{ personaje.nadar }}<br>
-	<p>Ofício</p>
-	{{ personaje.oficio }}<br>
-	<p>Piruetas</p>
-	{{ personaje.piruetas }}<br>
-	<p>Reunir Información</p>
-	{{ personaje.reunirInformacion }}<br>
-	<p>Saber</p>
-	{{ personaje.saber }}<br>
-	<p>Saltar</p>
-	{{ personaje.saltar }}<br>
-	<p>Sanar</p>
-	{{ personaje.sanar }}<br>
-	<p>Supervivencia</p>
-	{{ personaje.supervivencia }}<br>
-	<p>Tasación</p>
-	{{ personaje.tasacion }}<br>
-	<p>Trato con Animales</p>
-	{{ personaje.tratoAnimales }}<br>
-	<p>Trepar</p>
-	{{ personaje.trepar }}<br>
-	<p>Usar Objeto Mágico</p>
-	{{ personaje.usarObjetoMagico }}<br>
-	<p>Uso de Cuerdas</p>
-	{{ personaje.usoCuerdas }}<br>
-
+				<p>Fortaleza</p>
+				{{ personaje.fortaleza }}<br>
+				<p>Reflejos</p>
+				{{ personaje.reflejos }}<br>
+				<p>Voluntad</p>
+				{{ personaje.voluntad }}<br>
+			</div>
+			<div class="col-3">
+				<p>Abrir cerraduras</p>
+				{{ personaje.abrirCerraduras }}<br>
+				<p>Artesanía</p>
+				{{ personaje.artesania }}<br>
+				<p>Averiguar Intenciones</p>
+				{{ personaje.averiguarIntenciones }}<br>
+				<p>Avistar</p>
+				{{ personaje.avistar }}<br>
+				<p>Buscar</p>
+				{{ personaje.buscar }}<br>
+				<p>Concentración</p>
+				{{ personaje.concentracion }}<br>
+				<p>Conocimiento de Conjuros</p>
+				{{ personaje.conocimientoConjuros }}<br>
+				<p>Descifrar Escrituras</p>
+				{{ personaje.descifrarEscrituras }}<br>
+				<p>Diplomacia</p>
+				{{ personaje.diplomacia }}<br>
+				<p>Disfrazarse</p>
+				{{ personaje.disfrazarse }}<br>
+				<p>Engañar</p>
+				{{ personaje.engañar }}<br>
+				<p>Equilibrio</p>
+				{{ personaje.equilibrio }}<br>
+				<p>Esconderse</p>
+				{{ personaje.esconderse }}<br>
+				<p>Escuchar</p>
+				{{ personaje.escuchar }}<br>
+				<p>Falsificar</p>
+				{{ personaje.falsificar }}<br>
+				<p>Interpretar</p>
+				{{ personaje.interpretar }}<br>
+				<p>Intimidar</p>
+				{{ personaje.intimidar }}<br>
+			</div>
+			<div class="col-3">
+				<p>Inutilizar Mecanismos</p>
+				{{ personaje.inutilizarMecanismo }}<br>
+				<p>Juego de Manos</p>
+				{{ personaje.juegoManos }}<br>
+				<p>Montar</p>
+				{{ personaje.montar }}<br>
+				<p>Moverse Sigilosamente</p>
+				{{ personaje.moverseSigilosamente }}<br>
+				<p>Nadar</p>
+				{{ personaje.nadar }}<br>
+				<p>Ofício</p>
+				{{ personaje.oficio }}<br>
+				<p>Piruetas</p>
+				{{ personaje.piruetas }}<br>
+				<p>Reunir Información</p>
+				{{ personaje.reunirInformacion }}<br>
+				<p>Saber</p>
+				{{ personaje.saber }}<br>
+				<p>Saltar</p>
+				{{ personaje.saltar }}<br>
+				<p>Sanar</p>
+				{{ personaje.sanar }}<br>
+				<p>Supervivencia</p>
+				{{ personaje.supervivencia }}<br>
+				<p>Tasación</p>
+				{{ personaje.tasacion }}<br>
+				<p>Trato con Animales</p>
+				{{ personaje.tratoAnimales }}<br>
+				<p>Trepar</p>
+				{{ personaje.trepar }}<br>
+				<p>Usar Objeto Mágico</p>
+				{{ personaje.usarObjetoMagico }}<br>
+				<p>Uso de Cuerdas</p>
+				{{ personaje.usoCuerdas }}<br>
+			</div>
+		</div>
+	</div>
 
 	<br>
 	{{ form.as_p }}

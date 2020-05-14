@@ -3,10 +3,16 @@
 {% block content %}
 
 {% if request.user.id == object.camPar.usuCam.user.id %}
-	<form action="" method="post">{% csrf_token %}
-    	<p>Are you sure you want to delete "{{ object.camPar }}" - "{{ object.usuPar }}"?</p>
-    	<input type="submit" value="Confirm" />
-	</form>
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-6">
+				<form action="" method="post">{% csrf_token %}
+			    	<p>¿Seguro que quieres borrar la participación en "{{ object.camPar }}" del usuario "{{ object.usuPar }}"?</p>
+			    	<input type="submit" value="Confirm" />
+				</form>
+			</div>
+		</div>
+	</div>
 {% else %}
 	<p>No tienes permisos para esto</p>
 {% endif %}
