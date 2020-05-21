@@ -1,0 +1,35 @@
+a {
+	color: #ff6400;
+}
+
+a:visited {
+	color: #ff6400;
+}
+
+a:hover {
+	color: #ffaa72;
+}
+
+button {
+	background-color: #934700;
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	border-radius: 12px;
+}
+
+button:hover {
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.botonadd {
+	background-color: #934700;
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	border-radius: 12px;
+}
+
+.botonadd:hover {
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}

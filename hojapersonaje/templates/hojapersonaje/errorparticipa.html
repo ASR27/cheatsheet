@@ -1,5 +1,20 @@
 {% extends "plantilla_base.html" %}
 
 {% block content %}
-<p>error al guardar: No eres propietario de la campaña</p>
+<br>
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-6">
+				<p>Error al guardar: No eres propietario de la campaña</p>
+			</div>
+		</div>
+		<div class="row justify-content-center">
+			<div class="col-4">
+				<button onclick="location.href='/hojapersonaje/participa_add'">Crear Participación</button>
+			</div>
+			<div class="col-4">
+				<button onclick="location.href='/hojapersonaje/participalist'">Lista de participaciones</button>
+			</div>
+		</div>
+	</div>
 {% endblock %}

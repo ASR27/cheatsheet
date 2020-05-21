@@ -3,18 +3,20 @@
 {% block head_title %} Home {% endblock %}
 
 {% block content %}
-	<p><h1>Bienvenidos a CheatSheet</h1></p>
-	{% if user.is_authenticated %}
-		<p>Bienvenido {{ request.user }}</p>
-		<p>Detalles del usuario<button onclick="location.href='hojapersonaje/usuariodetail/{{ request.user.id }}'">Detalles</button></p>
-		<p>Lista de personajes<button onclick="location.href='hojapersonaje/estadisticas/'">Personajes</button></p>
-		<p>Lista de Campañas<button onclick="location.href='hojapersonaje/campanas/'">Campañas</button></p>
-		<p>Lista de Participaciones<button onclick="location.href='hojapersonaje/participalist/'">Participaciones</button></p>
-
-		<p>Cerrar Sesion<button onclick="location.href='{% url 'logout' %}'">Log Out</button></p>
-	{% else %}
-		<p>Registro <button onclick="location.href='{% url 'signup' %}'">Sign Up</button></p>
-		<p>Iniciar Sesión <button onclick="location.href='{% url 'login' %}'">Login</button></p>
-	{% endif %}
-	
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-6">
+				<br>
+				<p><h1>Bienvenidos a CheatSheet</h1></p>
+			</div>
+		</div>
+		<div class="row justify-content-start">
+			<div class="col-12">
+				<p>CheatSheet es una aplicación pensada para aliviar a los jugadores de D&D de la necesidad de mantener su hoja de personaje en formato físico. Preparada para D&D 3.5, la plantilla de personaje ofrecida es lo suficientemente sencilla y flexible como para poder ser usada en sistemas similares</p>
+				<p>En esta aplicación podrás crear campañas, establecer los usuarios que participan, y crear y asignar personajes a estas participaciones. Podrás tambíen modificar tus personajes según avance la campaña para asegurarte de que no necesitarás depender del papel, e incluso lanzar un dado virtual para varias características</p>
+				<p>Si eres además el DM de la partida, puedes a través de las participaciones ver la hoja de personaje de tus jugadores</p>
+				<p>¡Disfruta de tus partidas!</p>
+			</div>
+		</div>
+	</div>
 {% endblock %}

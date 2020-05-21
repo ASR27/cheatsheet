@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.shortcuts import HttpResponse, render, redirect, HttpResponseRedirect, get_object_or_404
 from django.views.generic import ListView, DetailView, TemplateView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -5,6 +6,7 @@ from django.urls import reverse_lazy
 from hojapersonaje.models import Participa
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required,user_passes_test
 from hojapersonaje.forms import Registro
@@ -63,18 +65,16 @@ class ParticipaDelete(DeleteView):
 	success_url = reverse_lazy('participantes')
 	template_name="hojapersonaje/participa_delete.html"
 
-class ParticipaUpdate(UpdateView):
+class ParticipaUpdate(LoginRequiredMixin, UpdateView):
 	model = Participa
 	form_class = ParticipaUpdateForm
-	#fields = ['perPar']
 	success_url = reverse_lazy('participantes')
 	template_name="hojapersonaje/participa_update.html"
 
 	def get_form_kwargs(self):
 		kwargs = super(ParticipaUpdate, self).get_form_kwargs()
-		kwargs.update({'usuPer': self.kwargs.get('usuPer')})
+		kwargs.update({'usuPer': self.kwargs.get('usuPer'), 'usuario': Perfil.objects.get(user=self.request.user)})
 		return kwargs
-
 
 
 def ErrorParticipa(request):
@@ -88,11 +88,11 @@ def ErrorParticipa(request):
 
 
 class UsuarioList(ListView):
-	model = User
+	model = Perfil
 	template_name="hojapersonaje/usuario_list.html"
 
 class UsuarioDetail(DetailView):
-	model = User
+	model = Perfil
 	template_name="hojapersonaje/usuario_detail.html"
 	fields = '__all__'
 

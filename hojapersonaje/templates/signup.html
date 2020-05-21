@@ -1,18 +1,29 @@
 {% extends 'plantilla_base.html' %}
 
 {% block content %}
-<h2>Sign Up</h2>
-<form method="post" enctype="multipart/form-data">
-	{% csrf_token %}
-	<p>usuario</p>
-	{{ form.username }}<br>
-	<p>contraseña</p>
-	{{ form.password1 }}<br>
-	<p>confirmar contraseña</p>
-	{{ form.password2 }}<br>
-	<p>avatar</p>
-	{{ form.imgPer }}<br>
-	<br>
-	<button type="submit">Sign up</button>
-</form>
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-6">
+				<br>
+				<h2>Registro</h2>
+				<form method="post" enctype="multipart/form-data">
+					<br>
+					{% csrf_token %}
+					<p>Usuario</p>
+					{{ form.username }}<br>
+					<br>
+					<p>Contraseña</p>
+					{{ form.password1 }}<br>
+					<br>
+					<p>Confirmar contraseña</p>
+					{{ form.password2 }}<br>
+					<br>
+					<p>Avatar</p>
+					{{ form.imgPer }}<br>
+					<br>
+					<button type="submit">Registro</button>
+				</form>
+			</div>
+		</div>
+	</div>
 {% endblock %}

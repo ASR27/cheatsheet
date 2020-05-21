@@ -4,9 +4,10 @@
 </br>
 
 	<div class="container">
-		<div class="row justify-content-start">
+		<div class="row justify-content-center">
 			<div class="col-5">
-				<p>Participar en una nueva campaña: <button onclick="location.href='{% url 'participa-add' %}'">Nueva Participación</button></p>
+				<p>Participar en una nueva campaña:</p>
+				<p><button onclick="location.href='{% url 'participa-add' %}'">Nueva Participación</button></p>
 			</div>
 		</div>
 	</div>
@@ -14,13 +15,13 @@
 </br>
 
 	<div class="container">
-		<div class="row justify-content-start">
-			<div class="col-5">
+		<div class="row justify-content-center">
+			<div class="col-8">
 				<p>Nombre de campaña - Nombre de Usuario - DM</p>
 				<ul>
 					{% for participa in object_list %}
 						{% if request.user.id == participa.usuPar.user.id or participa.camPar.usuCam.user.id %}
-							<li><a href="../participadetail/{{ participa.idPar }}">{{participa.camPar}} - {{participa.usuPar}} - {{participa.camPar.usuCam}}</a></li>
+							<li><a href="../participadetail/{{ participa.idPar }}">Campaña: "{{participa.camPar}}" - Usuario: "{{participa.usuPar}}" - DM: "{{participa.camPar.usuCam}}"</a></li>
 						{% endif %}
 					{% endfor %}
 				</ul>

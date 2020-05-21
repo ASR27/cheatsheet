@@ -30,4 +30,4 @@ urlpatterns = [
 	re_path('campanasupdate/(?P<pk>\d+)', CampañasUpdate.as_view(), name='campanasupdate'),
 	path('campanasdelete/<int:pk>/delete', CampañasDelete.as_view(), name='campanasdelete'),
 	path('errorparticipa/', TemplateView.as_view(template_name='hojapersonaje/errorparticipa.html')),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -124,6 +124,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATIC_ROOT = '/home/asr/Documentos/IAW/CheatSheet/cheatsheet/hojapersonaje/static'
+
 MEDIA_ROOT = '/home/asr/Documentos/IAW/CheatSheet/cheatsheet/hojapersonaje/media/'
 
 MEDIA_URL = '/media/'

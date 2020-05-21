@@ -38,8 +38,9 @@ class ParticipaUpdateForm(forms.ModelForm):
 
 	def __init__(self, *args, **kwargs):
 		usuPer = kwargs.pop('usuPer')
+		usuario = kwargs.pop('usuario')
 		super(ParticipaUpdateForm, self).__init__(*args, **kwargs)
-		self.fields['perPar'].queryset = Personaje.objects.all().filter(usuPer=2)
+		self.fields['perPar'].queryset = Personaje.objects.all().filter(usuPer=usuario)
 
 
 class EstadisticasAddForm(forms.Form):

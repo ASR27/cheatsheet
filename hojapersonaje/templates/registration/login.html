@@ -3,13 +3,22 @@
 {% block head_title %} Login {%endblock %}
 
 {% block content %}
-	<h2>Iniciar Sesión</h2>
-	<form method="post">
-		{% csrf_token %}
-		<p>Usuario</p>
-		{{ form.username }}<br>
-		<p>Contraseña</p>
-		{{ form.password }}<br>
-		<button type="submit">Iniciar sesión</button>
-	</form>
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-6">
+				<br>
+				<h2>Iniciar Sesión</h2>
+				<form method="post">
+					{% csrf_token %}
+					<p>Usuario</p>
+					{{ form.username }}<br>
+					<br>
+					<p>Contraseña</p>
+					{{ form.password }}<br>
+					<br>
+					<button type="submit">Iniciar sesión</button>
+				</form>
+			</div>
+		</div>
+	</div>
 {% endblock %}
