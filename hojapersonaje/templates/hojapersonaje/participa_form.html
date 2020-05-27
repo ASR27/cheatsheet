@@ -1,15 +1,18 @@
 {% extends "plantilla_base.html" %}
 
 {% block content %}
+<br>
 	<div class="container">
-		<div class="row justify-content-center">
+		<div class="row justify-content-center" id="unico">
 			<div class="col-6">
 				<form method="post" enctype="multipart/form-data">
 					{% csrf_token %}
 					<p>Usuario</p>
 					{{ participa.usuPar }}<br>
+					<br>
 					<p>Campaña</p>
 					{{ participa.camPar }}<br>
+					<br>
 					{{ form.as_p }}
 					<br>
 					<input class="botonadd" type="submit" value="Crear" />

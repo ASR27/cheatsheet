@@ -1,21 +1,26 @@
 {% extends 'plantilla_base.html' %}
 
 {% block content %}
+<br>
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-6">
 				<form method="post" enctype="multipart/form-data">
 					{% csrf_token %}
-					<p>Nombre de la campaña</p>
+					<p>Nombre de la campaña:</p>
 					{{ campaña.nomCam }}<br>
-					<p>Descripción</p>
+					<br>
+					<p>Descripción:</p>
 					{{ campaña.desCam }}<br>
-					<p>Fecha estimada de finalización</p>
+					<br>
+					<p>Fecha estimada de finalización:</p>
 					{{ campaña.ffinCam }}<br>
-					<p>Estado</p>
+					<br>
+					<p>Estado:</p>
 					{{ campaña.estCam }}<br>
+					<br>
 					{{ form.as_p }}<br>
-					<input type="submit" value="Crear" />
+					<input class="botonadd" type="submit" value="Crear" />
 				</form>
 			</div>
 		</div>

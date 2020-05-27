@@ -86,10 +86,9 @@ def ErrorParticipa(request):
 ###########################################
 
 
+def UsuarioList(request):
+	return HttpResponseRedirect('/')
 
-class UsuarioList(ListView):
-	model = Perfil
-	template_name="hojapersonaje/usuario_list.html"
 
 class UsuarioDetail(DetailView):
 	model = Perfil
@@ -100,7 +99,7 @@ class UsuarioDetail(DetailView):
 		context = super().get_content_data(**kwargs)
 		return
 
-class UsuarioUpdate(UpdateView):
+class UsuarioUpdate(LoginRequiredMixin, UpdateView):
 	model = Perfil
 	fields = ['imgPer']
 	template_name="hojapersonaje/usuarioupdate.html"
@@ -158,7 +157,7 @@ class EstadisticasUpdate(UpdateView):
 	'razPer',
 	'genPer',
 	'aliPer',
-	'camPer',
+	'ataPer',
 	'FUE',
 	'DES',
 	'CON',
@@ -167,6 +166,7 @@ class EstadisticasUpdate(UpdateView):
 	'CAR',
 	'DGPer',
 	'MaxDGPer',
+	'CAPer',
 	'fortaleza',
 	'reflejos',
 	'voluntad',
@@ -307,6 +307,14 @@ class CampañasUpdate(UpdateView):
 	fields = ['nomCam','desCam', 'ffinCam', 'estCam']
 	template_name="hojapersonaje/campañasupdate.html"
 	success_url = reverse_lazy('campañas')
+
+	def get_form(self, form_class=None):
+		form = super().get_form(form_class)
+		form.fields['desCam'].widget = forms.Textarea()
+		form.fields['ffinCam'].widget = forms.SelectDateWidget()
+		return form
+
+
 
 class CampañasDelete(DeleteView):
 	model = Campaña

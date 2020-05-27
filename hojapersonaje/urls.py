@@ -13,7 +13,7 @@ urlpatterns = [
 	path('accounts/', include('django.contrib.auth.urls')),
 	path('participalist/', ParticipaList.as_view(), name="participantes"),
 	path('participadetail/<int:pk>', ParticipaDetail.as_view(), name="participante"),
-	path('usuariolist/', UsuarioList.as_view(), name="usuarios"),
+	path('usuariolist/', UsuarioList, name="usuarios"),
 	path('usuariodetail/<int:pk>', UsuarioDetail.as_view(), name="usuario_detail"),
 	path('usuarioupdate/<int:pk>', UsuarioUpdate.as_view(), name="usuarioupdate"),
 	path('participa_add/', ParticipaCreate, name='participa-add'),

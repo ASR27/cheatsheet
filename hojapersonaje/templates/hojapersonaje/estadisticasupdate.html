@@ -3,18 +3,141 @@
 {% block content %}
 
 {% if request.user.id == personaje.usuPer.user.id %}
-	<div class="container">
+<br>
+	<div class="container-fluid">
 		<div class="row justify-content-center">
-			<div class="col-6">
+			<div class="col-3">
 				<form action="" method="post">{% csrf_token %}
-					{{ form.as_p }}
-					<input class="botonadd" type="submit" value="Update" />
+				<p>Nombre:</p>
+				{{ form.nomPer }}
+				<p>Clase:</p>
+				{{ form.claPer }}
+				<p>Nivel:</p>
+				{{ form.nivPer }}
+				<p>Ataque Base:</p>
+				{{ form.ataPer }}
+				<p>Raza:</p>
+				{{ form.razPer }}
+				<p>Genero:</p>
+				{{ form.genPer }}
+				<p>Alineamimento:</p>
+				{{ form.aliPer }}
+				<p>Vida Máxima:</p>
+				{{ form.MaxDGPer }}
+				<p>Vida Actual:</p>
+				{{ form.DGPer }}
+				<p>CA:</p>
+				{{ form.CAPer }}
+				<br>
+			</div>
+			<div class="col-3">
+				<p>Fuerza:</p>
+				{{ form.FUE }}<br>
+				<p>Destreza:</p>
+				{{ form.DES }}<br>
+				<p>Constitución:</p>
+				{{ form.CON }}<br>
+				<p>Inteligencia:</p>
+				{{ form.INT }}<br>
+				<p>Sabiduría:</p>
+				{{ form.SAB }}<br>
+				<p>Carisma:</p>
+				{{ form.CAR }}<br>
+				<br>
+
+				<p>Fortaleza:</p>
+				{{ form.fortaleza }}<br>
+				<p>Reflejos:</p>
+				{{ form.reflejos }}<br>
+				<p>Voluntad:</p>
+				{{ form.voluntad }}<br>
+			</div>
+			<div class="col-3">
+				<p>Abrir cerraduras:</p>
+				{{ form.abrirCerraduras }}<br>
+				<p>Artesanía:</p>
+				{{ form.artesania }}<br>
+				<p>Averiguar Intenciones:</p>
+				{{ form.averiguarIntenciones }}<br>
+				<p>Avistar:</p>
+				{{ form.avistar }}<br>
+				<p>Buscar:</p>
+				{{ form.buscar }}<br>
+				<p>Concentración:</p>
+				{{ form.concentracion }}<br>
+				<p>Conocimiento de Conjuros:</p>
+				{{ form.conocimientoConjuros }}<br>
+				<p>Descifrar Escrituras:</p>
+				{{ form.descifrarEscrituras }}<br>
+				<p>Diplomacia:</p>
+				{{ form.diplomacia }}<br>
+				<p>Disfrazarse:</p>
+				{{ form.disfrazarse }}<br>
+				<p>Engañar:</p>
+				{{ form.engañar }}<br>
+				<p>Equilibrio:</p>
+				{{ form.equilibrio }}<br>
+				<p>Esconderse:</p>
+				{{ form.esconderse }}<br>
+				<p>Escuchar:</p>
+				{{ form.escuchar }}<br>
+				<p>Falsificar:</p>
+				{{ form.falsificar }}<br>
+				<p>Interpretar:</p>
+				{{ form.interpretar }}<br>
+				<p>Intimidar:</p>
+				{{ form.intimidar }}<br>
+			</div>
+			<div class="col-3">
+				<p>Inutilizar Mecanismos:</p>
+				{{ form.inutilizarMecanismo }}<br>
+				<p>Juego de Manos:</p>
+				{{ form.juegoManos }}<br>
+				<p>Montar:</p>
+				{{ form.montar }}<br>
+				<p>Moverse Sigilosamente:</p>
+				{{ form.moverseSigilosamente }}<br>
+				<p>Nadar:</p>
+				{{ form.nadar }}<br>
+				<p>Ofício:</p>
+				{{ form.oficio }}<br>
+				<p>Piruetas:</p>
+				{{ form.piruetas }}<br>
+				<p>Reunir Información:</p>
+				{{ form.reunirInformacion }}<br>
+				<p>Saber:</p>
+				{{ form.saber }}<br>
+				<p>Saltar:</p>
+				{{ form.saltar }}<br>
+				<p>Sanar:</p>
+				{{ form.sanar }}<br>
+				<p>Supervivencia:</p>
+				{{ form.supervivencia }}<br>
+				<p>Tasación:</p>
+				{{ form.tasacion }}<br>
+				<p>Trato con Animales:</p>
+				{{ form.tratoAnimales }}<br>
+				<p>Trepar:</p>
+				{{ form.trepar }}<br>
+				<p>Usar Objeto Mágico:</p>
+				{{ form.usarObjetoMagico }}<br>
+				<p>Uso de Cuerdas:</p>
+				{{ form.usoCuerdas }}<br>
+				<br>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row justify-content-center" id="unico">
+			<div class="col-6">
+				<input class="botonadd" type="submit" value="Actualizar" />
 				</form>
 			</div>
 		</div>
 	</div>
-
+<br>
 {% else %}
+<br>
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-6">

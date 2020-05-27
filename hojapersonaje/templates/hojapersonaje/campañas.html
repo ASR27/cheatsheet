@@ -2,8 +2,8 @@
 
 {% block content %}
 </br>
-<div class="container">
-		<div class="row justify-content-start">
+	<div class="container">
+		<div class="row justify-content-center" id="unico">
 			<div class="col-5">
 				<button onclick="location.href='{% url 'campanasadd' %}'">Crear Campaña</button>
 			</div>
@@ -11,10 +11,11 @@
 	</div>
 
 </br>
+</br>
 
 	<div class="container">
-		<div class="row justify-content-start">
-			<div class="col-5">
+		<div class="row justify-content-center">
+			<div class="col-6">
 				<ul>
 					{% for campaña in object_list %}
 						<li><a href="/hojapersonaje/campanasdetail/{{ campaña.pk }}">Nombre: "{{campaña.nomCam}}" - DM: "{{ campaña.usuCam }}"</a></li>

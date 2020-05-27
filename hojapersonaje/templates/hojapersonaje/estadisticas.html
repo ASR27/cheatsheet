@@ -4,8 +4,8 @@
 </br>
 
 	<div class="container">
-		<div class="row justify-content-start">
-			<div class="col-5">
+		<div class="row justify-content-center">
+			<div class="col-5" id="unico">
 				<button onclick="location.href='{% url 'estadisticasadd' %}'">Crear Personaje</button>
 			</div>
 		</div>
@@ -14,8 +14,8 @@
 </br>
 
 	<div class="container">
-		<div class="row justify-content-start">
-			<div class="col-5">
+		<div class="row justify-content-center">
+			<div class="col-6">
 				<ul>
 					{% for personaje in object_list %}
 						{% if request.user.id == personaje.usuPer.user.id %}

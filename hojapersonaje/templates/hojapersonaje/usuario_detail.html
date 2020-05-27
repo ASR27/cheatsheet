@@ -4,11 +4,14 @@
 	<h2>{{ object.headline }}</h2>
 	<p>{{ object.context }}</p>
 	<div class="container">
-		<div class="row justify-content-start">
+		<div class="row justify-content-center" id="unico">
 			<div class="col-5">
-				<a href="/hojapersonaje/usuarioupdate/{{ object.pk }}">Modificar</a>
+				<button onclick="location.href='/hojapersonaje/usuarioupdate/{{ object.pk }}'">Modificar</button>
+				<br>
+				<br>
 				<p>Usuario: {{ object.user.username }}</p>
-				<p>Avatar:<img src='/media/{{ object.imgPer }}'></p>
+				<p>Avatar:</p>
+				<p><img src='/media/{{ object.imgPer }}'></p>
 			</div>
 		</div>
 	</div>

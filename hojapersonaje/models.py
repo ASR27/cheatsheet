@@ -65,7 +65,6 @@ class Personaje(models.Model):
 	MaxDGPer = models.IntegerField(blank=True, null=True)
 	CAPer = models.IntegerField(blank=True, null=True)
 
-	camPer = models.ForeignKey(Campaña, on_delete=models.CASCADE, blank=True, null=True)
 	usuPer = models.ForeignKey(Perfil, on_delete=models.CASCADE, blank=True, null=True)
 
 	FUE = models.IntegerField(blank=True, null=True)

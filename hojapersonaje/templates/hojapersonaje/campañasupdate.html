@@ -3,18 +3,31 @@
 {% block content %}
 
 {% if request.user.id == campaña.usuCam.user.id %}
+<br>
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-6">
 				<form action="" method="post">{% csrf_token %}
-					{{ form.as_p }}
-					<input type="submit" value="Update" />
+					<p>Nombre de la campaña:</p>
+					<p>{{ form.nomCam }}</p>
+					<br>
+					<p>Descripción de la campaña:</p>
+					<p>{{ form.desCam }}</p>
+					<br>
+					<p>Fecha de finalización:</p>
+					<p>{{ form.ffinCam }}</p>
+					<br>
+					<p>Estado de la campaña:</p>
+					<p>{{ form.estCam }}</p>
+					<br>
+					<input class="botonadd" type="submit" value="Update" />
 				</form>
 			</div>
 		</div>
 	</div>
 
 {% else %}
+<br>
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-6">

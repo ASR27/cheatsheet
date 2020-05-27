@@ -1,28 +1,30 @@
 {% extends 'plantilla_base.html' %}
 
 {% block content %}
+<br>
 	<div class="container">
-		<div class="row justify-content-center">
+		<div class="row justify-content-center" id="unico">
 			<div class="col-6">
-				<a href="/hojapersonaje/campanasupdate/{{ campaña.idCam }}">Modificar</a>
+				<button onclick="location.href='/hojapersonaje/campanasupdate/{{ campaña.idCam }}'">Modificar</button>
 			</div>
 			<div class="col-6">
-				<a href="/hojapersonaje/campanasdelete/{{ campaña.idCam }}/delete">Borrar</a>
+				<button onclick="location.href='/hojapersonaje/campanasdelete/{{ campaña.idCam }}/delete'">Borrar</button>
 			</div>
 		</div>
 	</div>
 
 </br>
+</br>
 
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-6">
-				<p>Nombre de la Campaña: {{ object.nomCam }}</p>
-				<p>Descripción de la Campaña: {{ object.desCam }}</p>
-				<p>DM: {{ object.usuCam }}</p>
-				<p>Fecha de creación: {{ object.finiCam }}</p>
-				<p>Fecha estimada de finalización: {{ object.ffinCam }}</p>
-				<p>Estado de la Campaña: {{ object.estCam }}</p>
+				<p>Nombre de la Campaña:<br>- {{ object.nomCam }}</p>
+				<p>Descripción de la Campaña:<br>- {{ object.desCam }}</p>
+				<p>DM:<br>- {{ object.usuCam }}</p>
+				<p>Fecha de creación:<br>- {{ object.finiCam }}</p>
+				<p>Fecha estimada de finalización:<br>- {{ object.ffinCam }}</p>
+				<p>Estado de la Campaña:<br>- {{ object.estCam }}</p>
 			</div>
 		</div>
 	</div>

@@ -21,20 +21,22 @@
 	    <span class="navbar-toggler-icon"></span>
 	  </button>
 	  <div class="collapse navbar-collapse order-1" id="navbarNavAltMarkup">
-	    <div class="navbar-nav">
 	    {% if user.is_authenticated %}
+	    <div class="navbar-nav">
 	      <a class="nav-item nav-link active" href="/hojapersonaje/usuariodetail/{{ request.user.id }}">Perfil</a>
 	      <a class="nav-item nav-link active" href="/hojapersonaje/estadisticas">Personajes</a>
 	      <a class="nav-item nav-link active" href="/hojapersonaje/campanas">Campañas</a>
 	      <a class="nav-item nav-link active" href="/hojapersonaje/participalist">Participaciones</a>
-	      <a class="nav-item nav-link active" href="/accounts/logout">Cerrar Sesión</a>
 	    </div>
 	    <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+	      <a class="nav-item nav-link active" href="/accounts/logout">Cerrar Sesión</a>
 	      <span class="navbar-text">Bienvenido, {{ request.user }}</span>
 	    </div>
 	    {% else %}
+	    <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
 	      <a class="nav-item nav-link active" href="/signup">Registrarse</a>
 	      <a class="nav-item nav-link active" href="/accounts/login">Iniciar Sesión</a>
+	    </div>
 	    {% endif %}
 	    </div>
 	  </div>
