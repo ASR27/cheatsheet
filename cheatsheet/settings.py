@@ -25,7 +25,7 @@ SECRET_KEY = 'u$!s%85z3tqgw(gmq#%0z*r&18b@5&6%ap424_6a8ajx7p$4)h'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 
@@ -89,20 +89,20 @@ DATABASES = {
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
 
-AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
-]
+#AUTH_PASSWORD_VALIDATORS = [
+#    {
+#        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+#    },
+#    {
+#        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+#    },
+#    {
+#        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+#    },
+#    {
+#        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+#    },
+#]
 
 
 # Internationalization
@@ -124,9 +124,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = '/home/asr/Documentos/IAW/CheatSheet/cheatsheet/hojapersonaje/static'
+STATIC_ROOT = '/home/webuser/www/cheatsheet/hojapersonaje/static'
 
-MEDIA_ROOT = '/home/asr/Documentos/IAW/CheatSheet/cheatsheet/hojapersonaje/media/'
+MEDIA_ROOT = '/home/webuser/www/cheatsheet/hojapersonaje/media/'
 
 MEDIA_URL = '/media/'
 
