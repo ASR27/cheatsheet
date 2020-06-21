@@ -17,7 +17,10 @@
 					{{ form.password }}<br>
 					<br>
 					<button type="submit">Iniciar sesión</button>
+					<br>
+					<br>
 				</form>
+				<button onclick="location.href='{% url 'social:begin' 'github' %}'">Login con GithHub</button>
 			</div>
 		</div>
 	</div>

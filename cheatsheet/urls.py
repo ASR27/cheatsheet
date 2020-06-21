@@ -29,6 +29,7 @@ router.register(r'participaapi', views.ParticipaAPI)
 
 
 urlpatterns = [
+	url(r'^oauth/', include('social_django.urls', namespace='social')),
     path('admin/', admin.site.urls),
     path('hojapersonaje/', include('hojapersonaje.urls')),
     url('signup/', signup, name='signup'),

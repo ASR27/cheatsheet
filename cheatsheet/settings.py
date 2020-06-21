@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'bootstrap4',
     'rest_framework',
+	'social_django',
 ]
 
 MIDDLEWARE = [
@@ -52,9 +53,18 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+	'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'cheatsheet.urls'
+
+AUTHENTICATION_BACKENDS = [
+    'social_core.backends.github.GithubOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+SOCIAL_AUTH_GITHUB_KEY = '6e74466690ea3a5c8e4d'
+SOCIAL_AUTH_GITHUB_SECRET = '0e7e29f6ae5e8f73f021c0ef8c501d9ab05ca2a8'
 
 TEMPLATES = [
     {
@@ -67,6 +77,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+		'social_django.context_processors.backends',
+		'social_django.context_processors.login_redirect',
             ],
         },
     },
