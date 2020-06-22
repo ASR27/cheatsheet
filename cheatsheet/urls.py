@@ -34,7 +34,7 @@ urlpatterns = [
     path('hojapersonaje/', include('hojapersonaje.urls')),
     url('signup/', signup, name='signup'),
     url('personajeboton/', PersonajeBoton, name='personajeboton'),
-    url(r'^$', TemplateView.as_view(template_name='home.html')),
+    url(r'^$', HomePage.as_view(), name='home'),
     path('', include('hojapersonaje.urls')),
     path('', include(router.urls)),
     path(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))

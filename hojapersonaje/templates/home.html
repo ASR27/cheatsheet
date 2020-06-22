@@ -16,7 +16,27 @@
 				<p>En esta aplicación podrás crear campañas, establecer los usuarios que participan, y crear y asignar personajes a estas participaciones. Podrás tambíen modificar tus personajes según avance la campaña para asegurarte de que no necesitarás depender del papel, e incluso lanzar un dado virtual para varias características</p>
 				<p>Si eres además el DM de la partida, puedes a través de las participaciones ver la hoja de personaje de tus jugadores</p>
 				<p>¡Disfruta de tus partidas!</p>
+				<br>
 			</div>
+		</div>
+		<div class="row justify-content-center">
+			<div class="col-5">
+				<h3>Ultimos personajes creados</h3>
+					<p>
+					{% for personaje in latest_personaje %}
+						<li><a href="/hojapersonaje/estadisticasdetail/{{ personaje.pk }}">{{ personaje.nomPer }}</a></li>
+					{% endfor %}
+					</p>
+			</div>
+			<div class="col-5">
+				<h3>Ultimas campañas creadas</h3>
+					<p>
+                                        {% for campaña in latest_campaña %}
+                                                <li><a href="/hojapersonaje/campanadetail/{{ campaña.pk }}">{{ campaña.nomCam }}</a></li>
+                                        {% endfor %}
+                                        </p>
+
+                        </div>
 		</div>
 	</div>
 {% endblock %}
